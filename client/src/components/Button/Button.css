@@ -1,0 +1,26 @@
+button {
+  background: white;
+  border: 2px solid #f56b2a;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* button:hover {
+  background: #f56b2a;
+  color: white;
+} */
+
+.buttonreturn {
+  width: 120px;
+  height: 60px;
+  color: #f56b2a;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 60px;
+  margin-top: 45px;
+  margin-left: 30px;
+}
