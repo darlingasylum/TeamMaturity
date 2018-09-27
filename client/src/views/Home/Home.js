@@ -42,7 +42,9 @@ class Home extends Component {
             classButton="buttonhome"
             textButton={e.nom_ft}
             key={e.id_ft}
-            to="/board"
+            to={{
+              pathname: `/board/${e.id_ft}`
+            }}
           />
         ))}
       </Fragment>

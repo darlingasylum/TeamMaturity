@@ -1,0 +1,14 @@
+.createButton {
+  color: #003333;
+  display: block;
+  font-size: 1.5em;
+  height: 80px;
+  margin: 200px auto 0px auto;
+  width: 300px;
+  transition: 0.3s;
+}
+
+.createButton:hover {
+  background: #f56b2a;
+  color: white;
+}
