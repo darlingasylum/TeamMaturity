@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./Button.css";
 
 class Button extends React.Component {
-  render() {
+  renderLink() {
     const { to, textButton, classButton } = this.props;
 
     return (
@@ -11,6 +11,24 @@ class Button extends React.Component {
         <button className={classButton}>{textButton}</button>
       </Link>
     );
+  }
+  renderButton() {
+    const { textButton, classButton, onClick } = this.props;
+
+    return (
+      <button className={classButton} onClick={onClick}>
+        {textButton}
+      </button>
+    );
+  }
+
+  render() {
+    const { to } = this.props;
+    if (typeof to !== "undefined") {
+      return this.renderLink();
+    } else {
+      return this.renderButton();
+    }
   }
 }
 
