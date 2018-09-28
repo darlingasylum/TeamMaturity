@@ -12,6 +12,11 @@ class Board extends Component {
     this.setState({ show: !this.state.show });
   };
 
+  componentDidMount() {
+    this.routeParam = this.props.match.params.id;
+    sessionStorage.setItem("id_ft", this.routeParam);
+  }
+
   render() {
     return (
       <Fragment>
