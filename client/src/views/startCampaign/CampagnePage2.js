@@ -1,16 +1,15 @@
 import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Question from "../../components/Question/Question";
 import Icon from "./Icons/noun_right.svg";
 import IconLeft from "./Icons/noun_left.svg";
 
-class Name extends React.Component {
+class NextPage extends React.Component {
   render() {
     return (
       <Fragment>
         <Header />
-        <h3>PROCESS: LES BASES</h3>
+        <h3>JE SUIS SUR LA PAGE 2</h3>
         <Question textQuestion="L'équipe s'est elle réunie au moins une fois les 2 derniers mois pour améliorer ses méthodes de travail ?" />
         <Question textQuestion="Votre équipe a t elle une liste connue, priorisée et claire des tâches sur lesquelles elle doit travailler ?" />
         <Question textQuestion="L'équipe délivre t elle à ses demandeurs au moins un incrément de service ou produit par mois ?" />
@@ -27,17 +26,11 @@ class Name extends React.Component {
           PROCESS: AIDER LES EQUIPES PARTENAIRES A AMELIORER LEURS PROCESS
         </h3>
         <Question textQuestion="L'équipe prend elle des actions pour aider les équipes partenaires à améliorer leur process ?" />
-        <img style={{ display: "none" }} className="leftArrow" src={IconLeft} />
-        <Link to="/campaign2">
-          <img
-            style={{ marginLeft: "50%" }}
-            className="rightArrow"
-            src={Icon}
-          />
-        </Link>
+        <img className="leftArrow" src={IconLeft} />
+        <img className="rightArrow" src={Icon} />
       </Fragment>
     );
   }
 }
 
-export default Name;
+export default NextPage;

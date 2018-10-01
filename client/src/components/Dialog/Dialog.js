@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import Button from "../Button/Button";
 
 class Dialog extends React.Component {
@@ -16,7 +18,7 @@ class Dialog extends React.Component {
 
   handleSubmit(event) {
     this.setState({ value: event.target.value });
-    event.preventDefault();
+    // event.preventDefault();
     console.log("nom de campagne :", this.state.value);
 
     const currentId = sessionStorage.getItem("id_ft");
@@ -50,11 +52,13 @@ class Dialog extends React.Component {
               type="text"
               placeholder="Nom de la campagne"
             />
-            <Button
-              textButton="Valider"
-              onClick={this.props.toggleDialog}
-              onClick={this.handleSubmit}
-            />
+            <Link to="/campaign">
+              <Button
+                textButton="Valider"
+                // onClick={this.props.toggleDialog}
+                onClick={this.handleSubmit}
+              />
+            </Link>
           </form>
         </div>
       </div>
