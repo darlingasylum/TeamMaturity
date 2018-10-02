@@ -8,6 +8,16 @@ const port = process.env.PORT || 5000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+const mysql = require("mysql");
+
+const connection = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "MDPmysqlLBC!",
+  database: "maturity"
+});
+
+// RECUPERE LE NOM DES FT
 app.get("/api/teams", function(req, res) {
   database.getTeam(function(err, dataset) {
     // console.log(dataset);
@@ -15,11 +25,50 @@ app.get("/api/teams", function(req, res) {
   });
 });
 
+//POSTE LE NOM D'UNE NOUVELLE CAMPAGNE
 app.post("/api/campaign-name", function(req, res) {
-  console.log(req.body);
+  // console.log(req.body);
   database.postCampaignName(function(err, dataset) {
     res.send(dataset);
   }, req.body);
+});
+
+//RECUPERE LES QUESTIONS "PROCESS"
+app.get("/api/questions/process", function(req, res) {
+  database.getProcessQuestions(function(err, dataset) {
+    //console.log("server questions");
+    res.send(dataset);
+  });
+});
+
+//RECUPERE LES QUESTIONS "QUALITE"
+app.get("/api/questions/qualite", function(req, res) {
+  database.getQualityQuestions(function(err, dataset) {
+    //console.log("server questions");
+    res.send(dataset);
+  });
+});
+
+//RECUPERE LES QUESTIONS "VALEUR"
+app.get("/api/questions/valeur", function(req, res) {
+  database.getValueQuestions(function(err, dataset) {
+    // console.log("server questions");
+    res.send(dataset);
+  });
+});
+
+// RECUPERE L'INTITULE DE CHAQUE QUESTION AU CLIC
+app.get("/api/questions/:id_q", function(req, res) {
+  console.log("dataset");
+  var id_q = req.params.id_q;
+  // database.getQuestion(function(err, dataset) {
+  //   res.send(dataset);
+  // });
+  var sql = `SELECT * FROM questions WHERE id_q=${id_q}`;
+  connection.query(sql, id_q, function(err, rows, fields) {
+    console.log(rows);
+    res.send(rows);
+  });
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

@@ -19,11 +19,9 @@ class Dialog extends React.Component {
   handleSubmit(event) {
     this.setState({ value: event.target.value });
     // event.preventDefault();
-    console.log("nom de campagne :", this.state.value);
 
     const currentId = sessionStorage.getItem("id_ft");
     const campaign_infos = { nom_campagne: this.state.value, id_ft: currentId };
-    console.log(campaign_infos);
     const fetch_param = {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -34,9 +32,7 @@ class Dialog extends React.Component {
       .then(function(results) {
         return results.json();
       })
-      .then(function(myresults) {
-        console.log(myresults);
-      });
+      .then(function(myresults) {});
   }
 
   render() {
@@ -52,7 +48,7 @@ class Dialog extends React.Component {
               type="text"
               placeholder="Nom de la campagne"
             />
-            <Link to="/campaign">
+            <Link to="/themes">
               <Button
                 textButton="Valider"
                 // onClick={this.props.toggleDialog}

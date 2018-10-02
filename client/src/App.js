@@ -3,9 +3,13 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Home from "./views/Home/Home";
 import Board from "./views/Board/Board";
-import startCampaign from "./views/startCampaign/startCampaign";
+import Themes from "./views/Themes/Themes";
+import CampaignProcess from "./views/Campaign/CampaignProcess";
+import CampaignQualite from "./views/Campaign/CampaignQualite";
+import CampaignValeurs from "./views/Campaign/CampaignValeurs";
 
 import "./App.css";
+import QuestionDialog from "./components/QuestionDialog/QuestionDialog";
 
 class App extends Component {
   render() {
@@ -13,7 +17,11 @@ class App extends Component {
       <Router>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/campaign" component={startCampaign} />
+          <Route path="/themes" component={Themes} />
+          <Route path="/campaign/process" component={CampaignProcess} />
+          <Route path="/campaign/qualite" component={CampaignQualite} />
+          <Route path="/campaign/valeurs" component={CampaignValeurs} />
+          <Route path="/campaign/question/:id_q" component={QuestionDialog} />
           <Route path="/board/:id" component={Board} />
         </Switch>
       </Router>
