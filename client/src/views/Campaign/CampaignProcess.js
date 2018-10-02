@@ -69,18 +69,51 @@ class CampaignProcess extends React.Component {
 
         <h3>Maîtriser vos livraisons</h3>
         {chapterWithQuestions.Process_maitriser.map(e => (
-          <Question textQuestion={e.intitule_q} key={e.id_q} number={e.id_q} />
+          <Link
+            to={{
+              pathname: `/campaign/question/${e.id_q}`,
+              state: { questionName: e.intitule_q }
+            }}
+          >
+            <Question
+              textQuestion={e.intitule_q}
+              key={e.id_q}
+              number={e.id_q}
+            />
+          </Link>
         ))}
 
         <h3>Améliorer vos livraisons</h3>
 
         {chapterWithQuestions.Process_ameliorer.map(e => (
-          <Question textQuestion={e.intitule_q} key={e.id_q} number={e.id_q} />
+          <Link
+            to={{
+              pathname: `/campaign/question/${e.id_q}`,
+              state: { questionName: e.intitule_q }
+            }}
+          >
+            <Question
+              textQuestion={e.intitule_q}
+              key={e.id_q}
+              number={e.id_q}
+            />
+          </Link>
         ))}
         <h3>Aider les équipes partenaires à améliorer leurs process</h3>
 
         {chapterWithQuestions.Process_aider.map(e => (
-          <Question textQuestion={e.intitule_q} key={e.id_q} number={e.id_q} />
+          <Link
+            to={{
+              pathname: `/campaign/question/${e.id_q}`,
+              state: { questionName: e.intitule_q }
+            }}
+          >
+            <Question
+              textQuestion={e.intitule_q}
+              key={e.id_q}
+              number={e.id_q}
+            />
+          </Link>
         ))}
         <img
           style={{ display: "none" }}

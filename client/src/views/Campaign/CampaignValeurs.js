@@ -30,7 +30,7 @@ class CampaignValeurs extends React.Component {
   };
 
   render() {
-    if (!this.state.response || this.state.response.length === []) return null;
+    if (!this.state.response || this.state.response.length == []) return null;
     const chapterWithQuestions = {};
     this.state.response.forEach(function(e) {
       if (!chapterWithQuestions[e.chapitre_q]) {
@@ -45,28 +45,84 @@ class CampaignValeurs extends React.Component {
         <Header />
         <h1>VALEURS</h1>
         <h3>Identifier la valeur</h3>
+        {console.log(chapterWithQuestions.Valeur_identifier)}
         {chapterWithQuestions.Valeur_identifier.map(e => (
-          <Question textQuestion={e.intitule_q} key={e.id_q} number={e.id_q} />
+          <Link
+            to={{
+              pathname: `/campaign/question/${e.id_q}`,
+              state: { questionName: e.intitule_q }
+            }}
+          >
+            <Question
+              textQuestion={e.intitule_q}
+              key={e.id_q}
+              number={e.id_q}
+            />
+          </Link>
         ))}
 
         <h3>Se concentrer sur la valeur</h3>
         {chapterWithQuestions.Valeur_concentrer.map(e => (
-          <Question textQuestion={e.intitule_q} key={e.id_q} number={e.id_q} />
+          <Link
+            to={{
+              pathname: `/campaign/question/${e.id_q}`,
+              state: { questionName: e.intitule_q }
+            }}
+          >
+            <Question
+              textQuestion={e.intitule_q}
+              key={e.id_q}
+              number={e.id_q}
+            />{" "}
+          </Link>
         ))}
 
         <h3>Livrer de la valeur</h3>
 
         {chapterWithQuestions.Valeur_livrer.map(e => (
-          <Question textQuestion={e.intitule_q} key={e.id_q} number={e.id_q} />
+          <Link
+            to={{
+              pathname: `/campaign/question/${e.id_q}`,
+              state: { questionName: e.intitule_q }
+            }}
+          >
+            <Question
+              textQuestion={e.intitule_q}
+              key={e.id_q}
+              number={e.id_q}
+            />{" "}
+          </Link>
         ))}
         <h3>Optimiser la valeur</h3>
         {chapterWithQuestions.Valeur_optimiser.map(e => (
-          <Question textQuestion={e.intitule_q} key={e.id_q} number={e.id_q} />
+          <Link
+            to={{
+              pathname: `/campaign/question/${e.id_q}`,
+              state: { questionName: e.intitule_q }
+            }}
+          >
+            <Question
+              textQuestion={e.intitule_q}
+              key={e.id_q}
+              number={e.id_q}
+            />{" "}
+          </Link>
         ))}
         <h3>De la valeur innovante</h3>
 
         {chapterWithQuestions.Valeur_innovante.map(e => (
-          <Question textQuestion={e.intitule_q} key={e.id_q} number={e.id_q} />
+          <Link
+            to={{
+              pathname: `/campaign/question/${e.id_q}`,
+              state: { questionName: e.intitule_q }
+            }}
+          >
+            <Question
+              textQuestion={e.intitule_q}
+              key={e.id_q}
+              number={e.id_q}
+            />{" "}
+          </Link>
         ))}
         <img className="leftArrow" src={IconLeft} alt="leftarrow" />
         <Link to="/campaign/qualite">

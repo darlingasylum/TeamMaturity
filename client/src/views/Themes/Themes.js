@@ -6,7 +6,9 @@ import Question from "../../components/Question/Question";
 
 class Themes extends React.Component {
   state = {
-    response: []
+    response: [],
+    currentId: sessionStorage.getItem("id_ft"),
+    currentCampaignName: sessionStorage.getItem("currentCampaignName")
   };
 
   componentDidMount() {
@@ -14,13 +16,20 @@ class Themes extends React.Component {
       .then(response => {
         // console.log(response);
         this.setState({ response });
-        // console.log(this.state.response);
+        sessionStorage.setItem(
+          "currentCampaignId",
+          this.state.response[0].id_camp
+        );
       })
       .catch(err => console.log(err));
   }
 
   callApi = async () => {
-    const response = await fetch("/api/teams");
+    const response = await fetch(
+      `/api/campaign_id/${this.state.currentId}/${
+        this.state.currentCampaignName
+      }`
+    );
     const body = await response.json();
 
     if (response.status !== 200) throw Error(body.message);

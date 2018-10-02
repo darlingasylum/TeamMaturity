@@ -35,7 +35,18 @@ class CampaignQualite extends React.Component {
         <Header />
         <h1>QUALITE</h1>
         {this.state.response.map(e => (
-          <Question textQuestion={e.intitule_q} key={e.id_q} number={e.id_q} />
+          <Link
+            to={{
+              pathname: `/campaign/question/${e.id_q}`,
+              state: { questionName: e.intitule_q }
+            }}
+          >
+            <Question
+              textQuestion={e.intitule_q}
+              key={e.id_q}
+              number={e.id_q}
+            />
+          </Link>
         ))}
         <Link to="/campaign/process">
           <img className="leftArrow" src={IconLeft} alt="leftarrow" />

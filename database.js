@@ -99,6 +99,38 @@ const getValueQuestions = clbk => {
 //   });
 // };
 
+// RECUPERE L'ID DE LA CAMPAGNE (nécessaire au POST des réponses)
+// const getCampaignId = clbk => {
+//   connection.query(
+//     "SELECT id_camp FROM campagnes WHERE statut_camp = 0",
+//     function(error, results, fields) {
+//       console.log(results);
+//       if (error) return clbk(error, null);
+//       return clbk(null, results);
+//     }
+//   );
+// };
+
+//POSTE LES REPONSES à UNE QUESTION
+const send_response = (clbk, data) => {
+  const sql =
+    "INSERT INTO resultats(id_camp_r, id_q_r, reponse_r, commentaire_r) VALUES (?, ?, ?, ?)";
+  const payload = [
+    data.id_camp_r,
+    data.id_q_r,
+    data.reponse_r,
+    data.commentaire_r
+  ];
+
+  connection.query(sql, payload, function(error, results, cols) {
+    console.log(error);
+    console.log(results);
+    console.log(cols);
+    if (error) return clbk(error, null);
+    return clbk(null, results);
+  });
+};
+
 module.exports = {
   getTeam,
   postCampaignName,
@@ -106,5 +138,7 @@ module.exports = {
   getQualityQuestions,
   getValueQuestions,
   // getQuestion,
+  // getCampaignId,
+  send_response,
   end
 };

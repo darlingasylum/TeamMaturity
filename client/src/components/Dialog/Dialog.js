@@ -33,6 +33,14 @@ class Dialog extends React.Component {
         return results.json();
       })
       .then(function(myresults) {});
+
+    sessionStorage.setItem("currentCampaignName", this.state.value);
+
+    // fetch(`/api/campaign_id/${this.state.value}/${this.currentId}`)
+    //   .then(function(results) {
+    //     return results.json();
+    //   })
+    //   .then(function(myresults) {});
   }
 
   render() {
