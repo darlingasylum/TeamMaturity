@@ -7,21 +7,11 @@ const connection = mysql.createConnection({
   database: "maturity"
 });
 
-connection.connect(function(err) {
-  //   console.error(err);
-  //   console.log("connected as id " + connection.threadId);
-});
+connection.connect(function(err) {});
 
 const end = () => {
   connection.end();
 };
-
-// const test = () => {
-//   connection.query("SELECT 1 + 1 AS solution", function(error, results) {
-//     if (error) throw error;
-//     console.log("The solution is: ", results[0].solution);
-//   });
-// };
 
 // RECUPERE LE NOM DES FT
 const getTeam = clbk => {
@@ -112,58 +102,14 @@ const getCampaignId = (id_ft, campaign_name, clbk) => {
   );
 };
 
-// //POSTE LES REPONSES à UNE QUESTION
-// const send_response = (clbk, data) => {
-//   const sql =
-//     "INSERT INTO resultats(id_camp_r, id_q_r, reponse_r, commentaire_r) VALUES (?, ?, ?, ?)";
-//   const payload = [
-//     data.id_camp_r,
-//     data.id_q_r,
-//     data.reponse_r,
-//     data.commentaire_r
-//   ];
-
-//   connection.query(sql, payload, function(error, results, cols) {
-//     console.log(error);
-//     console.log(results);
-//     console.log(cols);
-//     if (error) return clbk(error, null);
-//     return clbk(null, results);
-//   });
-// };
-
-//POSTE LES REPONSES à UNE QUESTION
-// const send_response = (clbk, data) => {
-
-//   const sql =
-//    // "INSERT INTO resultats(id_camp_r, id_q_r, reponse_r, commentaire_r) VALUES (?, ?, ?, ?)";
-//     "IF (NOT EXISTS(SELECT * FROM resultats WHERE id_q_r='data.id_q_r'  AND id_camp_r = 'data.id_camp_r') BEGIN INSERT INTO resultats(id_camp_r, id_q_r, reponse_r, commentaire_r) VALUES (?, ?, ?, ?) END ELSE BEGIN UPDATE resultats SET reponse_r ='data.reponse_r', commentaire_r='data.commentaire_r' GetDate, END "
-//   const payload = [
-//     data.id_camp_r,
-//     data.id_q_r,
-//     data.reponse_r,
-//     data.commentaire_r
-//   ];
-
-//   connection.query(sql, payload, function(error, results, cols) {
-//     console.log(error);
-//     console.log(results);
-//     console.log(cols);
-//     if (error) return clbk(error, null);
-//     return clbk(null, results);
-//   });
-// };
-
+// POST LES RESULTATS DES QUESTIONS OU UPDATE SI UNE REPONSE EXISTE DEJA
 const send_response = (clbk, data) => {
-  // console.log(data.id_q_r);
-  // console.log(data.id_camp_r);
   const payload = [
     data.id_camp_r,
     data.id_q_r,
     data.reponse_r,
     data.commentaire_r
   ];
-
   connection.query(
     `SELECT * FROM resultats WHERE id_camp_r = ${data.id_camp_r} AND id_q_r = ${
       data.id_q_r
@@ -197,28 +143,22 @@ const send_response = (clbk, data) => {
       }
     }
   );
+};
 
-  // if (results[0] !== undefined) {
-  //   console.log("ma réponse existe déjà");
-  // } else {
-  //   console.log("ma réponse n'existe pas");
-  // }
-  //     const sql =
-  //      // "INSERT INTO resultats(id_camp_r, id_q_r, reponse_r, commentaire_r) VALUES (?, ?, ?, ?)";
-  //     const payload = [
-  //       data.id_camp_r,
-  //       data.id_q_r,
-  //       data.reponse_r,
-  //       data.commentaire_r
-  //     ];
-
-  //     connection.query(sql, payload, function(error, results, cols) {
-  //       console.log(error);
-  //       console.log(results);
-  //       console.log(cols);
-  //       if (error) return clbk(error, null);
-  //       return clbk(null, results);
-  //     });
+// CHANGE LE STATUT DE LA CAMPAGNE AU CLIC SUR VALIDER
+const changeStatusCampaign = (clbk, data) => {
+  const q = `UPDATE campagnes SET statut_camp=1 WHERE id_ft_camp=${
+    data.id_ft
+  } AND id_camp=${data.id_camp}`;
+  const payload = [data.id_ft, data.id_camp];
+  //console.log(payload);
+  connection.query(q, payload, function(error, results, cols) {
+    // console.log(error);
+    // console.log(results);
+    // console.log(cols);
+    if (error) return clbk(error, null);
+    return clbk(null, results);
+  });
 };
 
 module.exports = {
@@ -230,5 +170,6 @@ module.exports = {
   getQuestion,
   getCampaignId,
   send_response,
+  changeStatusCampaign,
   end
 };

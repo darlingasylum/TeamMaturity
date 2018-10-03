@@ -81,17 +81,11 @@ app.post("/api/send_response", function(req, res) {
   }, req.body);
 });
 
-// // VERIFIE SI UNE QUESTION POSSEDE UNE REPONSE POUR AFFICHER LA BONNE ICONE
-// app.get("/api/check_response/:id_q", function(req, res) {
-//   var id_q = req.params.id_q;
-//   // database.getQuestion(function(err, dataset) {
-//   //   res.send(dataset);
-//   // });
-//   var sql = `SELECT COUNT(*) FROM resultats WHERE id_q_r=${id_q}`;
-//   connection.query(sql, id_q, function(err, rows, fields) {
-//     // console.log(rows);
-//     res.send(rows);
-//   });
-// });
+// CHANGE LE STATUT DE LA CAMPAGNE AU CLIC SUR VALIDER
+app.post("/api/changeStatusCampaign", function(req, res) {
+  database.changeStatusCampaign(function(err, dataset) {
+    res.send(dataset);
+  }, req.body);
+});
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
