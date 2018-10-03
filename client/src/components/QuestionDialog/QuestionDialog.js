@@ -59,6 +59,9 @@ class QuestionDialog extends React.Component {
         return results.json();
       })
       .then(function(myresults) {});
+
+    //revient à la page précédente
+    window.history.go(-1);
   };
 
   render() {
