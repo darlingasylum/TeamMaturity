@@ -60,13 +60,8 @@ app.get("/api/questions/valeur", function(req, res) {
 // RECUPERE L'INTITULE DE CHAQUE QUESTION AU CLIC
 app.get("/api/questions/:id_q", function(req, res) {
   var id_q = req.params.id_q;
-  // database.getQuestion(function(err, dataset) {
-  //   res.send(dataset);
-  // });
-  var sql = `SELECT * FROM questions WHERE id_q=${id_q}`;
-  connection.query(sql, id_q, function(err, rows, fields) {
-    // console.log(rows);
-    res.send(rows);
+  database.getQuestion(id_q, function(err, dataset) {
+    res.send(dataset);
   });
 });
 
@@ -74,12 +69,8 @@ app.get("/api/questions/:id_q", function(req, res) {
 app.get("/api/campaign_id/:id_ft/:campaign_name", function(req, res) {
   var campaign_name = req.params.campaign_name;
   var id_ft = req.params.id_ft;
-  // database.getCampaignId(function(err, dataset) {
-  //   res.send(dataset);
-  // });
-  var sql = `SELECT * FROM campagnes WHERE id_ft_camp=${id_ft} AND nom_camp='${campaign_name}' AND statut_camp=0`;
-  connection.query(sql, function(err, rows, fields) {
-    res.send(rows);
+  database.getCampaignId(id_ft, campaign_name, function(err, dataset) {
+    res.send(dataset);
   });
 });
 
@@ -90,17 +81,17 @@ app.post("/api/send_response", function(req, res) {
   }, req.body);
 });
 
-// VERIFIE SI UNE QUESTION POSSEDE UNE REPONSE POUR AFFICHER LA BONNE ICONE
-app.get("/api/check_response/:id_q", function(req, res) {
-  var id_q = req.params.id_q;
-  // database.getQuestion(function(err, dataset) {
-  //   res.send(dataset);
-  // });
-  var sql = `SELECT COUNT(*) FROM resultats WHERE id_q_r=${id_q}`;
-  connection.query(sql, id_q, function(err, rows, fields) {
-    // console.log(rows);
-    res.send(rows);
-  });
-});
+// // VERIFIE SI UNE QUESTION POSSEDE UNE REPONSE POUR AFFICHER LA BONNE ICONE
+// app.get("/api/check_response/:id_q", function(req, res) {
+//   var id_q = req.params.id_q;
+//   // database.getQuestion(function(err, dataset) {
+//   //   res.send(dataset);
+//   // });
+//   var sql = `SELECT COUNT(*) FROM resultats WHERE id_q_r=${id_q}`;
+//   connection.query(sql, id_q, function(err, rows, fields) {
+//     // console.log(rows);
+//     res.send(rows);
+//   });
+// });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
