@@ -19,7 +19,7 @@ class Themes extends React.Component {
       .then(response => {
         // console.log(response);
         this.setState({ response });
-        console.log(response);
+        //console.log(response);
         sessionStorage.setItem(
           "currentCampaignId",
           this.state.response[0].id_camp
@@ -67,15 +67,14 @@ class Themes extends React.Component {
         <Link to="/campaign/process">
           <Question textQuestion="PROCESS" />
         </Link>
-        ;
+
         <Link to="/campaign/qualite">
           <Question textQuestion="QUALITE" />
         </Link>
-        ;
+
         <Link to="/campaign/valeurs">
           <Question textQuestion="VALEURS" />
         </Link>
-        ;
         <Button
           textButton="Valider le questionnaire"
           onClick={this.handleClick}

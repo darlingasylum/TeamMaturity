@@ -25,6 +25,15 @@ app.get("/api/teams", function(req, res) {
   });
 });
 
+// VERIFIE SI UNE CAMPAGNE DE STATUT ZERO EXISTE
+app.get("/api/getCurrentCampaign/:id_ft", function(req, res) {
+  const id_ft = req.params.id_ft;
+  database.getCurrentCampaign(id_ft, function(err, dataset) {
+    // console.log(dataset);
+    res.send(dataset);
+  });
+});
+
 //POSTE LE NOM D'UNE NOUVELLE CAMPAGNE
 app.post("/api/campaign-name", function(req, res) {
   // console.log(req.body);

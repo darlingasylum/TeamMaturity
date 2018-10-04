@@ -25,6 +25,18 @@ const getTeam = clbk => {
   });
 };
 
+// VERIFIE SI UNE CAMPAGNE DE STATUT ZERO EXISTE
+const getCurrentCampaign = (id_ft, clbk) => {
+  connection.query(
+    `SELECT * FROM campagnes WHERE id_ft_camp=${id_ft} AND statut_camp=0`,
+    function(error, results, fields) {
+      console.log(results);
+      if (error) return clbk(error, null);
+      return clbk(null, results);
+    }
+  );
+};
+
 //POSTE LE NOM D'UNE NOUVELLE CAMPAGNE
 const postCampaignName = (clbk, data) => {
   const q = "INSERT INTO campagnes(nom_camp, id_ft_camp) VALUES (?, ?)";
@@ -171,5 +183,6 @@ module.exports = {
   getCampaignId,
   send_response,
   changeStatusCampaign,
+  getCurrentCampaign,
   end
 };
