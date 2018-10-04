@@ -52,23 +52,11 @@ const postCampaignName = (clbk, data) => {
 };
 
 //RECUPERE LES QUESTIONS "PROCESS"
-const getProcessQuestions = clbk => {
+const getProcessQuestions = (currentCampaignId, clbk) => {
   //console.log("je suis dans DB questions");
   connection.query(
-    "SELECT * FROM questions WHERE chapitre_q LIKE 'Process%'",
+    `SELECT * FROM questions LEFT JOIN resultats ON questions.id_q = resultats.id_q_r AND id_camp_r = ${currentCampaignId} WHERE chapitre_q LIKE 'Process%'`,
     //et envoyer les réponses qui existent déjà. s
-    function(error, results, fields) {
-      if (error) return clbk(error, null);
-      return clbk(null, results);
-    }
-  );
-};
-
-//RECUPERE LES QUESTIONS "QUALITE"
-const getQualityQuestions = clbk => {
-  //console.log("je suis dans DB questions");
-  connection.query(
-    "SELECT * FROM questions WHERE chapitre_q LIKE 'Qualité%'",
     function(error, results, fields) {
       // console.log(results);
       if (error) return clbk(error, null);
@@ -77,10 +65,23 @@ const getQualityQuestions = clbk => {
   );
 };
 
-//RECUPERE LES QUESTIONS "VALEUR"
-const getValueQuestions = clbk => {
+//RECUPERE LES QUESTIONS "QUALITE"
+const getQualityQuestions = (currentCampaignId, clbk) => {
+  console.log(currentCampaignId);
   connection.query(
-    "SELECT * FROM questions WHERE chapitre_q LIKE 'Valeur%'",
+    `SELECT * FROM questions LEFT JOIN resultats ON questions.id_q = resultats.id_q_r AND id_camp_r = ${currentCampaignId} WHERE chapitre_q = 'Qualité'`,
+    function(error, results, fields) {
+      //console.log(results);
+      if (error) return clbk(error, null);
+      return clbk(null, results);
+    }
+  );
+};
+
+//RECUPERE LES QUESTIONS "VALEUR"
+const getValueQuestions = (currentCampaignId, clbk) => {
+  connection.query(
+    `SELECT * FROM questions LEFT JOIN resultats ON questions.id_q = resultats.id_q_r AND id_camp_r = ${currentCampaignId} WHERE chapitre_q LIKE 'Valeur%'`,
     function(error, results, fields) {
       if (error) return clbk(error, null);
       return clbk(null, results);

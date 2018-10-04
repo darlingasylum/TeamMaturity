@@ -15,7 +15,6 @@ class Themes extends React.Component {
 
   //récupère l'ID de la campagne et on le stocke dans le session storage et dans le state
   componentDidMount() {
-    console.log(this.state.currentCampaignName);
     this.callApi()
       .then(response => {
         // console.log(response);

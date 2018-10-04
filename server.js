@@ -43,24 +43,27 @@ app.post("/api/campaign-name", function(req, res) {
 });
 
 //RECUPERE LES QUESTIONS "PROCESS"
-app.get("/api/questions/process", function(req, res) {
-  database.getProcessQuestions(function(err, dataset) {
+app.get("/api/questions/process/:currentCampaignId", function(req, res) {
+  var currentCampaignId = req.params.currentCampaignId;
+  database.getProcessQuestions(currentCampaignId, function(err, dataset) {
     //console.log("server questions");
     res.send(dataset);
   });
 });
 
 //RECUPERE LES QUESTIONS "QUALITE"
-app.get("/api/questions/qualite", function(req, res) {
-  database.getQualityQuestions(function(err, dataset) {
+app.get("/api/questions/qualite/:currentCampaignId", function(req, res) {
+  var currentCampaignId = req.params.currentCampaignId;
+  database.getQualityQuestions(currentCampaignId, function(err, dataset) {
     //console.log("server questions");
     res.send(dataset);
   });
 });
 
 //RECUPERE LES QUESTIONS "VALEUR"
-app.get("/api/questions/valeur", function(req, res) {
-  database.getValueQuestions(function(err, dataset) {
+app.get("/api/questions/valeur/:currentCampaignId", function(req, res) {
+  var currentCampaignId = req.params.currentCampaignId;
+  database.getValueQuestions(currentCampaignId, function(err, dataset) {
     // console.log("server questions");
     res.send(dataset);
   });

@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 
 import Header from "../../components/Header/Header";
 import Question from "../../components/Question/Question";
-import Icon from "./Icons/noun_right.svg";
-import IconLeft from "./Icons/noun_left.svg";
+import IconCheck from "./Icons/check2.png";
 
 class CampaignValeurs extends React.Component {
   state = {
-    response: []
+    response: [],
+    currentCampaignId: sessionStorage.getItem("currentCampaignId")
   };
 
   componentDidMount() {
@@ -21,7 +21,9 @@ class CampaignValeurs extends React.Component {
   }
 
   callApi = async () => {
-    const response = await fetch("/api/questions/valeur");
+    const response = await fetch(
+      `/api/questions/valeur/${this.state.currentCampaignId}`
+    );
     const body = await response.json();
 
     if (response.status !== 200) throw Error(body.message);
@@ -45,7 +47,6 @@ class CampaignValeurs extends React.Component {
         <Header />
         <h1>VALEURS</h1>
         <h3>Identifier la valeur</h3>
-        {console.log(chapterWithQuestions.Valeur_identifier)}
         {chapterWithQuestions.Valeur_identifier.map(e => (
           <Link
             to={{
@@ -53,11 +54,20 @@ class CampaignValeurs extends React.Component {
               state: { questionName: e.intitule_q }
             }}
           >
-            <Question
-              textQuestion={e.intitule_q}
-              key={e.id_q}
-              number={e.id_q}
-            />
+            {typeof e.reponse_r === "number" ? (
+              <Question
+                textQuestion={e.intitule_q}
+                key={e.id_q}
+                number={e.id_q}
+                sourceIcon={IconCheck}
+              />
+            ) : (
+              <Question
+                textQuestion={e.intitule_q}
+                key={e.id_q}
+                number={e.id_q}
+              />
+            )}
           </Link>
         ))}
 
@@ -69,11 +79,20 @@ class CampaignValeurs extends React.Component {
               state: { questionName: e.intitule_q }
             }}
           >
-            <Question
-              textQuestion={e.intitule_q}
-              key={e.id_q}
-              number={e.id_q}
-            />{" "}
+            {typeof e.reponse_r === "number" ? (
+              <Question
+                textQuestion={e.intitule_q}
+                key={e.id_q}
+                number={e.id_q}
+                sourceIcon={IconCheck}
+              />
+            ) : (
+              <Question
+                textQuestion={e.intitule_q}
+                key={e.id_q}
+                number={e.id_q}
+              />
+            )}
           </Link>
         ))}
 
@@ -86,11 +105,20 @@ class CampaignValeurs extends React.Component {
               state: { questionName: e.intitule_q }
             }}
           >
-            <Question
-              textQuestion={e.intitule_q}
-              key={e.id_q}
-              number={e.id_q}
-            />{" "}
+            {typeof e.reponse_r === "number" ? (
+              <Question
+                textQuestion={e.intitule_q}
+                key={e.id_q}
+                number={e.id_q}
+                sourceIcon={IconCheck}
+              />
+            ) : (
+              <Question
+                textQuestion={e.intitule_q}
+                key={e.id_q}
+                number={e.id_q}
+              />
+            )}
           </Link>
         ))}
         <h3>Optimiser la valeur</h3>
@@ -101,11 +129,20 @@ class CampaignValeurs extends React.Component {
               state: { questionName: e.intitule_q }
             }}
           >
-            <Question
-              textQuestion={e.intitule_q}
-              key={e.id_q}
-              number={e.id_q}
-            />{" "}
+            {typeof e.reponse_r === "number" ? (
+              <Question
+                textQuestion={e.intitule_q}
+                key={e.id_q}
+                number={e.id_q}
+                sourceIcon={IconCheck}
+              />
+            ) : (
+              <Question
+                textQuestion={e.intitule_q}
+                key={e.id_q}
+                number={e.id_q}
+              />
+            )}
           </Link>
         ))}
         <h3>De la valeur innovante</h3>
@@ -117,21 +154,25 @@ class CampaignValeurs extends React.Component {
               state: { questionName: e.intitule_q }
             }}
           >
-            <Question
-              textQuestion={e.intitule_q}
-              key={e.id_q}
-              number={e.id_q}
-            />{" "}
+            {typeof e.reponse_r === "number" ? (
+              <Question
+                textQuestion={e.intitule_q}
+                key={e.id_q}
+                number={e.id_q}
+                sourceIcon={IconCheck}
+              />
+            ) : (
+              <Question
+                textQuestion={e.intitule_q}
+                key={e.id_q}
+                number={e.id_q}
+              />
+            )}
           </Link>
         ))}
-        <img className="leftArrow" src={IconLeft} alt="leftarrow" />
+
         <Link to="/campaign/qualite">
-          <img
-            style={{ display: "none" }}
-            className="rightArrow"
-            src={Icon}
-            alt="rightarrow"
-          />
+          <img />
         </Link>
       </Fragment>
     );

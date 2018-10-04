@@ -4,25 +4,28 @@ import { Link } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Question from "../../components/Question/Question";
 
-import Icon from "./Icons/noun_right.svg";
-import IconLeft from "./Icons/noun_left.svg";
+import IconCheck from "./Icons/check2.png";
 
 class CampaignProcess extends React.Component {
   state = {
     response: [],
-    show: false
+    show: false,
+    currentCampaignId: sessionStorage.getItem("currentCampaignId")
   };
 
   componentDidMount() {
     this.callApi()
       .then(response => {
+        // console.log(response);
         this.setState({ response });
       })
       .catch(err => console.log(err));
   }
 
   callApi = async () => {
-    const response = await fetch("/api/questions/process");
+    const response = await fetch(
+      `/api/questions/process/${this.state.currentCampaignId}`
+    );
     const body = await response.json();
     if (response.status !== 200) throw Error(body.message);
     return body;
@@ -38,6 +41,7 @@ class CampaignProcess extends React.Component {
         chapterWithQuestions[e.chapitre_q].push(e);
       }
     });
+    //console.log(chapterWithQuestions);
 
     return (
       <Fragment>
@@ -51,12 +55,22 @@ class CampaignProcess extends React.Component {
               state: { questionName: e.intitule_q }
             }}
           >
-            <Question
-              onClick={this.showQuestion}
-              textQuestion={e.intitule_q}
-              key={e.id_q}
-              number={e.id_q}
-            />
+            {typeof e.reponse_r === "number" ? (
+              <Question
+                onClick={this.showQuestion}
+                textQuestion={e.intitule_q}
+                key={e.id_q}
+                sourceIcon={IconCheck}
+                number={e.id_q}
+              />
+            ) : (
+              <Question
+                onClick={this.showQuestion}
+                textQuestion={e.intitule_q}
+                key={e.id_q}
+                number={e.id_q}
+              />
+            )}
           </Link>
         ))}
 
@@ -68,11 +82,22 @@ class CampaignProcess extends React.Component {
               state: { questionName: e.intitule_q }
             }}
           >
-            <Question
-              textQuestion={e.intitule_q}
-              key={e.id_q}
-              number={e.id_q}
-            />
+            {typeof e.reponse_r === "number" ? (
+              <Question
+                onClick={this.showQuestion}
+                textQuestion={e.intitule_q}
+                key={e.id_q}
+                sourceIcon={IconCheck}
+                number={e.id_q}
+              />
+            ) : (
+              <Question
+                onClick={this.showQuestion}
+                textQuestion={e.intitule_q}
+                key={e.id_q}
+                number={e.id_q}
+              />
+            )}
           </Link>
         ))}
 
@@ -85,11 +110,22 @@ class CampaignProcess extends React.Component {
               state: { questionName: e.intitule_q }
             }}
           >
-            <Question
-              textQuestion={e.intitule_q}
-              key={e.id_q}
-              number={e.id_q}
-            />
+            {typeof e.reponse_r === "number" ? (
+              <Question
+                onClick={this.showQuestion}
+                textQuestion={e.intitule_q}
+                key={e.id_q}
+                sourceIcon={IconCheck}
+                number={e.id_q}
+              />
+            ) : (
+              <Question
+                onClick={this.showQuestion}
+                textQuestion={e.intitule_q}
+                key={e.id_q}
+                number={e.id_q}
+              />
+            )}
           </Link>
         ))}
         <h3>Aider les équipes partenaires à améliorer leurs process</h3>
@@ -101,27 +137,26 @@ class CampaignProcess extends React.Component {
               state: { questionName: e.intitule_q }
             }}
           >
-            <Question
-              textQuestion={e.intitule_q}
-              key={e.id_q}
-              number={e.id_q}
-            />
+            {typeof e.reponse_r === "number" ? (
+              <Question
+                onClick={this.showQuestion}
+                textQuestion={e.intitule_q}
+                key={e.id_q}
+                sourceIcon={IconCheck}
+                number={e.id_q}
+              />
+            ) : (
+              <Question
+                onClick={this.showQuestion}
+                textQuestion={e.intitule_q}
+                key={e.id_q}
+                number={e.id_q}
+              />
+            )}
           </Link>
         ))}
-        <img
-          style={{ display: "none" }}
-          className="leftArrow"
-          src={IconLeft}
-          alt="leftarrow"
-        />
-        <Link to="/campaign/qualite">
-          <img
-            style={{ marginLeft: "50%" }}
-            className="rightArrow"
-            src={Icon}
-            alt="rightarrow"
-          />
-        </Link>
+
+        <Link to="/campaign/qualite" />
       </Fragment>
     );
   }
