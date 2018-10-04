@@ -30,7 +30,7 @@ const getCurrentCampaign = (id_ft, clbk) => {
   connection.query(
     `SELECT * FROM campagnes WHERE id_ft_camp=${id_ft} AND statut_camp=0`,
     function(error, results, fields) {
-      console.log(results);
+      //console.log(results);
       if (error) return clbk(error, null);
       return clbk(null, results);
     }

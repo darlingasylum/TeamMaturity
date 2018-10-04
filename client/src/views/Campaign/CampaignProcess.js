@@ -17,8 +17,6 @@ class CampaignProcess extends React.Component {
     this.callApi()
       .then(response => {
         this.setState({ response });
-        console.log(response);
-        // this.checkIfResponseExists(response);
       })
       .catch(err => console.log(err));
   }
@@ -29,16 +27,6 @@ class CampaignProcess extends React.Component {
     if (response.status !== 200) throw Error(body.message);
     return body;
   };
-
-  // checkIfResponseExists = array_of_response => {
-  //   array_of_response.map(e => {
-  //     fetch(`/api/check_response/${e.id_q}`)
-  //       .then(function(results) {
-  //         return results.json();
-  //       })
-  //       .then(function(myresults) {});
-  //   });
-  // };
 
   render() {
     if (!this.state.response || this.state.response.length == []) return null;

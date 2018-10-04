@@ -15,6 +15,7 @@ class Themes extends React.Component {
 
   //récupère l'ID de la campagne et on le stocke dans le session storage et dans le state
   componentDidMount() {
+    console.log(this.state.currentCampaignName);
     this.callApi()
       .then(response => {
         // console.log(response);
@@ -40,7 +41,7 @@ class Themes extends React.Component {
     return body;
   };
 
-  //au click valide la campahne en changeant le statut 0--> 1
+  //au click valide la campagne en changeant le statut 0--> 1
   handleClick = () => {
     console.log(this.state.currentId, this.state.currentCampaignId);
     const campaign_infos = {

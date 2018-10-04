@@ -22,7 +22,11 @@ class Board extends Component {
       .then(response => {
         //console.log(response);
         this.setState({ currentCampaign: response });
-        //console.log(this.state.currentCampaign);
+        //console.log(this.state.currentCampaign[0].nom_camp);
+        sessionStorage.setItem(
+          "currentCampaignName",
+          this.state.currentCampaign[0].nom_camp
+        );
       })
       .catch(err => console.log(err));
   }
@@ -46,7 +50,9 @@ class Board extends Component {
           <Button
             textButton="Reprendre la campagne en cours"
             classButton="createButton"
-            to={{ pathname: `/themes` }}
+            to={{
+              pathname: `/themes`
+            }}
           />
         </Fragment>
       );
