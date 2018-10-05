@@ -37,6 +37,17 @@ const getCurrentCampaign = (id_ft, clbk) => {
   );
 };
 
+// const getCurrentCampaign = (id_ft, clbk) => {
+//   connection.query(
+//     `SELECT * FROM campagnes WHERE id_ft_camp=${id_ft}`,
+//     function(error, results, fields) {
+//       //console.log(results);
+//       if (error) return clbk(error, null);
+//       return clbk(null, results);
+//     }
+//   );
+// };
+
 //POSTE LE NOM D'UNE NOUVELLE CAMPAGNE
 const postCampaignName = (clbk, data) => {
   const q = "INSERT INTO campagnes(nom_camp, id_ft_camp) VALUES (?, ?)";

@@ -1,5 +1,9 @@
 import React from "react";
+
+import { Link } from "react-router-dom";
+
 import "./QuestionDialog.css";
+import Button from "../Button/Button";
 
 class QuestionDialog extends React.Component {
   constructor(props) {
@@ -39,32 +43,37 @@ class QuestionDialog extends React.Component {
   //gère l'envoi de la réponse au clic sur "valider"
   handleSubmit = event => {
     event.preventDefault();
-    const currentCampaignId = sessionStorage.getItem("currentCampaignId");
+    if (this.state.input_button_value.length === 0) {
+      window.alert("Vous n'avez pas répondu à la question");
+    } else {
+      const currentCampaignId = sessionStorage.getItem("currentCampaignId");
 
-    //POST LA REPONSE à la DB
-    const response_infos = {
-      id_camp_r: currentCampaignId,
-      id_q_r: this.idQuestion,
-      reponse_r: this.state.input_button_value,
-      commentaire_r: this.state.input_text_value
-    };
-    const fetch_param = {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(response_infos)
-    };
+      //POST LA REPONSE à la DB
+      const response_infos = {
+        id_camp_r: currentCampaignId,
+        id_q_r: this.idQuestion,
+        reponse_r: this.state.input_button_value,
+        commentaire_r: this.state.input_text_value
+      };
+      const fetch_param = {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(response_infos)
+      };
 
-    fetch("/api/send_response", fetch_param)
-      .then(function(results) {
-        return results.json();
-      })
-      .then(function(myresults) {});
+      fetch("/api/send_response", fetch_param)
+        .then(function(results) {
+          return results.json();
+        })
+        .then(function(myresults) {});
 
-    //revient à la page précédente
-    window.history.go(-1);
+      //revient à la page précédente
+      window.history.go(-1);
+    }
   };
 
   render() {
+    // let ConditionalLink =  ? Link : Fragment;
     if (!this.state.response || this.state.response.length === []) return null;
     return (
       <div className="MaskPage">
@@ -97,7 +106,14 @@ class QuestionDialog extends React.Component {
               />
             </label>
             <br /> <br />
-            <input type="submit" value="Valider" />
+            <Button type="submit" textButton="Valider" />
+            {/* <ConditionalLink
+                to={{
+                  pathname: "/themes"
+                }}
+              >
+                <Button textButton="Valider" onClick={this.handleSubmit} />
+              </ConditionalLink> */}
           </form>
         </div>
       </div>

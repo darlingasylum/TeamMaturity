@@ -17,7 +17,7 @@ class Themes extends React.Component {
   componentDidMount() {
     this.callApi()
       .then(response => {
-        // console.log(response);
+        console.log(response);
         this.setState({ response });
         //console.log(response);
         sessionStorage.setItem(
@@ -58,6 +58,7 @@ class Themes extends React.Component {
         return results.json();
       })
       .then(function(myresults) {});
+    window.history.go(-1);
   };
 
   render() {
@@ -78,9 +79,9 @@ class Themes extends React.Component {
         <Button
           textButton="Valider le questionnaire"
           onClick={this.handleClick}
-          to={{
-            pathname: `/board/${this.state.currentId}`
-          }}
+          // to={{
+          //   pathname: `/board/${this.state.currentId}`
+          // }}
         />
       </Fragment>
     );
