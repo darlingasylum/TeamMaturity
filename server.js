@@ -28,7 +28,7 @@ app.get("/api/teams", function(req, res) {
 // VERIFIE SI UNE CAMPAGNE DE STATUT ZERO EXISTE
 app.get("/api/getCurrentCampaign/:id_ft", function(req, res) {
   const id_ft = req.params.id_ft;
-  database.getCurrentCampaign(id_ft, function(err, dataset) {
+  database.getCurrentsCampaigns(id_ft, function(err, dataset) {
     // console.log(dataset);
     res.send(dataset);
   });
@@ -81,6 +81,7 @@ app.get("/api/questions/:id_q", function(req, res) {
 app.get("/api/campaign_id/:id_ft/:campaign_name", function(req, res) {
   var campaign_name = req.params.campaign_name;
   var id_ft = req.params.id_ft;
+
   database.getCampaignId(id_ft, campaign_name, function(err, dataset) {
     res.send(dataset);
   });

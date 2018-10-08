@@ -15,7 +15,7 @@ class CampaignQualite extends React.Component {
     this.callApi()
       .then(response => {
         this.setState({ response });
-        console.log(this.state.response);
+        //console.log(this.state.response);
       })
       .catch(err => console.log(err));
   }
@@ -26,7 +26,7 @@ class CampaignQualite extends React.Component {
     );
     const body = await response.json();
 
-    if (response.status !== 200) throw Error(body.message);
+    if (response.status !== 200) throw Error("error");
 
     return body;
   };
@@ -34,7 +34,7 @@ class CampaignQualite extends React.Component {
   render() {
     return (
       <Fragment>
-        <Header />
+        <Header className="buttonreturn" />
         <h1>QUALITE</h1>
         {this.state.response.map(e => (
           <Link

@@ -45,7 +45,7 @@ class CampaignProcess extends React.Component {
 
     return (
       <Fragment>
-        <Header />
+        <Header className="buttonreturn" />
         <h1>PROCESS</h1>
         <h3>Les bases</h3>
         {chapterWithQuestions.Process_bases.map(e => (

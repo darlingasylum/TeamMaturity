@@ -25,10 +25,9 @@ const getTeam = clbk => {
   });
 };
 
-// VERIFIE SI UNE CAMPAGNE DE STATUT ZERO EXISTE
-const getCurrentCampaign = (id_ft, clbk) => {
+const getCurrentsCampaigns = (id_ft, clbk) => {
   connection.query(
-    `SELECT * FROM campagnes WHERE id_ft_camp=${id_ft} AND statut_camp=0`,
+    `SELECT * FROM campagnes WHERE id_ft_camp=${id_ft}`,
     function(error, results, fields) {
       //console.log(results);
       if (error) return clbk(error, null);
@@ -36,17 +35,6 @@ const getCurrentCampaign = (id_ft, clbk) => {
     }
   );
 };
-
-// const getCurrentCampaign = (id_ft, clbk) => {
-//   connection.query(
-//     `SELECT * FROM campagnes WHERE id_ft_camp=${id_ft}`,
-//     function(error, results, fields) {
-//       //console.log(results);
-//       if (error) return clbk(error, null);
-//       return clbk(null, results);
-//     }
-//   );
-// };
 
 //POSTE LE NOM D'UNE NOUVELLE CAMPAGNE
 const postCampaignName = (clbk, data) => {
@@ -116,10 +104,11 @@ const getQuestion = (id_q, clbk) => {
 
 // RECUPERE L'ID DE LA CAMPAGNE (nécessaire au POST des réponses)
 const getCampaignId = (id_ft, campaign_name, clbk) => {
+  console.log(campaign_name, id_ft);
   connection.query(
-    `SELECT * FROM campagnes WHERE id_ft_camp=${id_ft} AND nom_camp='${campaign_name}' AND statut_camp=0`,
+    `SELECT * FROM campagnes WHERE id_ft_camp=${id_ft} AND nom_camp='${campaign_name}'`,
     function(error, results, fields) {
-      // console.log(results);
+      console.log(results);
       if (error) return clbk(error, null);
       return clbk(null, results);
     }
@@ -195,6 +184,6 @@ module.exports = {
   getCampaignId,
   send_response,
   changeStatusCampaign,
-  getCurrentCampaign,
+  getCurrentsCampaigns,
   end
 };

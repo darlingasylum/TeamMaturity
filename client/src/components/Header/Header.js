@@ -10,10 +10,9 @@ class Header extends React.Component {
     return (
       <div>
         <nav className="header">
-          {/* <Button classbutton="buttonreturn" textbutton="RETOUR" /> */}
           <button
+            className={this.props.className}
             onClick={() => this.props.history.goBack()}
-            className="buttonreturn"
           >
             RETOUR
           </button>

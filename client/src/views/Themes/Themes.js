@@ -15,6 +15,9 @@ class Themes extends React.Component {
 
   //récupère l'ID de la campagne et on le stocke dans le session storage et dans le state
   componentDidMount() {
+    console.log("id de la FT : ", this.state.currentId);
+    console.log("nom de la campagne : ", this.state.currentCampaignName);
+
     this.callApi()
       .then(response => {
         console.log(response);
@@ -25,6 +28,7 @@ class Themes extends React.Component {
           this.state.response[0].id_camp
         );
         this.setState({ currentCampaignId: this.state.response[0].id_camp });
+        console.log("id de la campagne : ", this.state.currentCampaignId);
       })
       .catch(err => console.log(err));
   }
@@ -64,7 +68,7 @@ class Themes extends React.Component {
   render() {
     return (
       <Fragment>
-        <Header />
+        <Header className="buttonreturn" />
         <Link to="/campaign/process">
           <Question textQuestion="PROCESS" />
         </Link>

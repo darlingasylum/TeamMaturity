@@ -44,7 +44,7 @@ class CampaignValeurs extends React.Component {
 
     return (
       <Fragment>
-        <Header />
+        <Header className="buttonreturn" />
         <h1>VALEURS</h1>
         <h3>Identifier la valeur</h3>
         {chapterWithQuestions.Valeur_identifier.map(e => (
