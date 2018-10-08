@@ -5,6 +5,8 @@ import Header from "../../components/Header/Header";
 import Question from "../../components/Question/Question";
 import Button from "../../components/Button/Button";
 
+import "./Themes.css";
+
 class Themes extends React.Component {
   state = {
     response: [],
@@ -15,8 +17,8 @@ class Themes extends React.Component {
 
   //récupère l'ID de la campagne et on le stocke dans le session storage et dans le state
   componentDidMount() {
-    console.log("id de la FT : ", this.state.currentId);
-    console.log("nom de la campagne : ", this.state.currentCampaignName);
+    // console.log("id de la FT : ", this.state.currentId);
+    // console.log("nom de la campagne : ", this.state.currentCampaignName);
 
     this.callApi()
       .then(response => {
@@ -28,7 +30,7 @@ class Themes extends React.Component {
           this.state.response[0].id_camp
         );
         this.setState({ currentCampaignId: this.state.response[0].id_camp });
-        console.log("id de la campagne : ", this.state.currentCampaignId);
+        //console.log("id de la campagne : ", this.state.currentCampaignId);
       })
       .catch(err => console.log(err));
   }
@@ -46,7 +48,7 @@ class Themes extends React.Component {
 
   //au click valide la campagne en changeant le statut 0--> 1
   handleClick = () => {
-    console.log(this.state.currentId, this.state.currentCampaignId);
+    // console.log(this.state.currentId, this.state.currentCampaignId);
     const campaign_infos = {
       id_ft: this.state.currentId,
       id_camp: this.state.currentCampaignId
@@ -69,24 +71,24 @@ class Themes extends React.Component {
     return (
       <Fragment>
         <Header className="buttonreturn" />
-        <Link to="/campaign/process">
-          <Question textQuestion="PROCESS" />
-        </Link>
+        <div className="space">
+          <Link to="/campaign/process">
+            <Question textQuestion="PROCESS" />
+          </Link>
 
-        <Link to="/campaign/qualite">
-          <Question textQuestion="QUALITE" />
-        </Link>
+          <Link to="/campaign/qualite">
+            <Question textQuestion="QUALITE" />
+          </Link>
 
-        <Link to="/campaign/valeurs">
-          <Question textQuestion="VALEURS" />
-        </Link>
-        <Button
-          textButton="Valider le questionnaire"
-          onClick={this.handleClick}
-          // to={{
-          //   pathname: `/board/${this.state.currentId}`
-          // }}
-        />
+          <Link to="/campaign/valeurs">
+            <Question textQuestion="VALEURS" />
+          </Link>
+          <Button
+            textButton="Valider le questionnaire"
+            onClick={this.handleClick}
+            classButton="ValideBtn"
+          />
+        </div>
       </Fragment>
     );
   }

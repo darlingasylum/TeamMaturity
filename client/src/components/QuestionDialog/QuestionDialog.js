@@ -74,49 +74,56 @@ class QuestionDialog extends React.Component {
 
   render() {
     // let ConditionalLink =  ? Link : Fragment;
-    if (!this.state.response || this.state.response.length === []) return null;
+
+    if (!this.state.response || this.state.response.length == []) return null;
+
     return (
-      <div className="MaskPage">
-        <div className="QuestionPopUp">
-          <form onSubmit={this.handleSubmit}>
-            {this.state.response.map(e => (
-              <p>{e.intitule_q}</p>
-            ))}
-            <label>
-              <br />
-              <input
-                type="radio"
-                name="radiobutton"
-                value="1"
-                onChange={this.onButtonChanged}
-              />
-              Oui <br />
-              <input
-                type="radio"
-                name="radiobutton"
-                value="0"
-                onChange={this.onButtonChanged}
-              />{" "}
-              Non
-              <br />
-              <input
-                type="text"
-                placeholder="Commentaire"
-                onChange={this.onTextChanged}
-              />
-            </label>
-            <br /> <br />
-            <Button type="submit" textButton="Valider" />
-            {/* <ConditionalLink
+      console.log(this.state.response[0].id_q),
+      (
+        <div className="MaskPage">
+          <a href={this.state.response[0].lien_q} target="_blank">
+            <div className="QuestionPopUp">
+              <form onSubmit={this.handleSubmit}>
+                {this.state.response.map(e => (
+                  <p>{e.intitule_q}</p>
+                ))}
+                <label>
+                  <br />
+                  <input
+                    type="radio"
+                    name="radiobutton"
+                    value="1"
+                    onChange={this.onButtonChanged}
+                  />
+                  Oui <br />
+                  <input
+                    type="radio"
+                    name="radiobutton"
+                    value="0"
+                    onChange={this.onButtonChanged}
+                  />{" "}
+                  Non
+                  <br />
+                  <input
+                    type="text"
+                    placeholder="Commentaire"
+                    onChange={this.onTextChanged}
+                  />
+                </label>
+                <br /> <br />
+                <Button type="submit" textButton="Valider" />
+                {/* <ConditionalLink
                 to={{
                   pathname: "/themes"
                 }}
               >
                 <Button textButton="Valider" onClick={this.handleSubmit} />
               </ConditionalLink> */}
-          </form>
+              </form>
+            </div>
+          </a>
         </div>
-      </div>
+      )
     );
   }
 }

@@ -5,9 +5,9 @@ class Logo extends React.Component {
   render() {
     return (
       <img
+        className="returnbtn"
         style={{
-          objectFit: "contain",
-          marginLeft: "29%"
+          objectFit: "contain"
         }}
         src={Image}
         alt="logo leboncoin"

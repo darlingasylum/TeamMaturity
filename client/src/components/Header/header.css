@@ -4,6 +4,7 @@
   background: #003333;
   border-bottom: 5px solid #f56b2a;
   display: flex;
+  justify-content: center;
 }
 
 .p_maturity {
@@ -22,6 +23,8 @@
   line-height: 60px;
   margin-top: 45px;
   margin-left: 30px;
+  position: absolute;
+  left: 15px;
 }
 
 .hiddenclass {

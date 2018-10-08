@@ -1,0 +1,24 @@
+.ValideBtn {
+  background: white;
+  border: 2px solid #f56b2a;
+  border-radius: 15px;
+  cursor: pointer;
+  width: 200px;
+  height: 60px;
+  transition: 0.3s;
+  /* margin-left: 38%; */
+  margin: auto;
+}
+
+.ValideBtn:hover {
+  background: #f56b2a;
+  color: white;
+}
+
+.space {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px;
+  width: 100%;
+}
