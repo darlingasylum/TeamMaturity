@@ -10,12 +10,12 @@ class Home extends Component {
     response: []
   };
 
+  //récupère le nom des FT
   componentDidMount() {
     this.callApi()
       .then(response => {
-        // console.log(response);
         this.setState({ response });
-        // console.log(this.state.response);
+        sessionStorage.clear();
       })
       .catch(err => console.log(err));
   }
@@ -23,9 +23,7 @@ class Home extends Component {
   callApi = async () => {
     const response = await fetch("/api/teams");
     const body = await response.json();
-
     if (response.status !== 200) throw Error(body.message);
-
     return body;
   };
 

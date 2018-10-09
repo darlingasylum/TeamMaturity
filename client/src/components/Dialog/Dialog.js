@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 import Button from "../Button/Button";
 
+import "./Dialog.css";
+
 class Dialog extends React.Component {
   constructor(props) {
     super(props);
@@ -19,34 +21,8 @@ class Dialog extends React.Component {
     this.setState({ value: event.target.value });
   }
 
-  // handleSubmit(event) {
-  //   this.setState({ value: event.target.value });
-  //   // event.preventDefault();
-
-  //   const currentId = sessionStorage.getItem("id_ft");
-  //   const campaign_infos = { nom_campagne: this.state.value, id_ft: currentId };
-  //   const fetch_param = {
-  //     method: "POST",
-  //     headers: { "content-type": "application/json" },
-  //     body: JSON.stringify(campaign_infos)
-  //   };
-
-  //   fetch("/api/campaign-name", fetch_param)
-  //     .then(function(results) {
-  //       return results.json();
-  //     })
-  //     .then(function(myresults) {});
-
-  //   sessionStorage.setItem("currentCampaignName", this.state.value);
-
-  // }
-
   handleSubmit(event) {
-    // if (event.target.value.length === 0) {
-    //   return null;
-    // } else {
     this.setState({ value: event.target.value });
-    // event.preventDefault();
 
     const currentId = sessionStorage.getItem("id_ft");
     const campaign_infos = {
@@ -74,10 +50,10 @@ class Dialog extends React.Component {
       <Fragment>
         <div className="mask">
           <div className="popup">
-            <form onSubmit={this.handleSubmit}>
-              {/* <i className="fas fa-times" onClick={this.props.toggleDialog} /> */}
-              <span>Donnez un nom à votre campagne</span>
+            <form onSubmit={this.handleSubmit} className="form">
+              <span className="textSpan">Donnez un nom à votre campagne</span>
               <input
+                className="inputPopUp"
                 value={this.state.value}
                 onChange={this.handleChange}
                 type="text"
@@ -90,7 +66,11 @@ class Dialog extends React.Component {
                   pathname: "/themes"
                 }}
               >
-                <Button textButton="Valider" onClick={this.handleSubmit} />
+                <Button
+                  textButton="Valider"
+                  onClick={this.handleSubmit}
+                  classButton="btnValider"
+                />
               </ConditionalLink>
             </form>
           </div>

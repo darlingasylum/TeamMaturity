@@ -21,6 +21,7 @@ class QuestionDialog extends React.Component {
     this.callApi()
       .then(response => {
         this.setState({ response });
+        //console.log(response);
       })
       .catch(err => console.log(err));
   }
@@ -32,6 +33,7 @@ class QuestionDialog extends React.Component {
     return body;
   };
 
+  //stocke les réponses dans le state
   onTextChanged(event) {
     this.setState({ input_text_value: event.target.value });
   }
@@ -55,6 +57,7 @@ class QuestionDialog extends React.Component {
         reponse_r: this.state.input_button_value,
         commentaire_r: this.state.input_text_value
       };
+
       const fetch_param = {
         method: "POST",
         headers: { "content-type": "application/json" },
@@ -73,57 +76,47 @@ class QuestionDialog extends React.Component {
   };
 
   render() {
-    // let ConditionalLink =  ? Link : Fragment;
-
     if (!this.state.response || this.state.response.length == []) return null;
 
     return (
-      console.log(this.state.response[0].id_q),
-      (
-        <div className="MaskPage">
-          <a href={this.state.response[0].lien_q} target="_blank">
-            <div className="QuestionPopUp">
-              <form onSubmit={this.handleSubmit}>
-                {this.state.response.map(e => (
-                  <p>{e.intitule_q}</p>
-                ))}
-                <label>
-                  <br />
-                  <input
-                    type="radio"
-                    name="radiobutton"
-                    value="1"
-                    onChange={this.onButtonChanged}
-                  />
-                  Oui <br />
-                  <input
-                    type="radio"
-                    name="radiobutton"
-                    value="0"
-                    onChange={this.onButtonChanged}
-                  />{" "}
-                  Non
-                  <br />
-                  <input
-                    type="text"
-                    placeholder="Commentaire"
-                    onChange={this.onTextChanged}
-                  />
-                </label>
-                <br /> <br />
-                <Button type="submit" textButton="Valider" />
-                {/* <ConditionalLink
-                to={{
-                  pathname: "/themes"
-                }}
-              >
-                <Button textButton="Valider" onClick={this.handleSubmit} />
-              </ConditionalLink> */}
-              </form>
-            </div>
-          </a>
+      // console.log(this.state.response[0].id_q),
+      <div className="MaskPage">
+        <div className="QuestionPopUp">
+          <form onSubmit={this.handleSubmit}>
+            {this.state.response.map(e => (
+              <a href={this.state.response[0].lien_q} target="_blank">
+                {" "}
+                <p>{e.intitule_q}</p>{" "}
+              </a>
+            ))}
+            <label>
+              <br />
+              <input
+                type="radio"
+                name="radiobutton"
+                value="1"
+                onChange={this.onButtonChanged}
+              />
+              Oui <br />
+              <input
+                type="radio"
+                name="radiobutton"
+                value="0"
+                onChange={this.onButtonChanged}
+              />{" "}
+              Non
+              <br />
+              <input
+                type="text"
+                placeholder="Commentaire"
+                onChange={this.onTextChanged}
+              />
+            </label>
+            <br /> <br />
+            <Button type="submit" textButton="Valider" />
+          </form>
         </div>
-      )
+      </div>
     );
   }
 }

@@ -12,19 +12,21 @@ class Board extends Component {
     passedCampaigns: []
   };
 
+  //ouvre/ferme la popup
   toggleDialog = () => {
     this.setState({ show: !this.state.show });
-    console.log("coucou");
   };
 
   componentDidMount() {
     this.routeParam = this.props.match.params.id;
     sessionStorage.setItem("id_ft", this.routeParam);
-    //on reçoit toutes les campagnes de la FT
+    //récupère toutes les campagnes de la FT
     this.callApi()
       .then(response => {
+        //inverse l'ordre pour que la dernière campagne s'affiche en 1er
         const resverseResponse = response.reverse();
-        //on map sur la réponse et on trie les campagnes en cours (statut 0) et les campagnes passées (statut 1)
+        //  console.log(resverseResponse);
+        //map sur la réponse et on trie la campagne en cours (statut 0) et les campagnes passées (statut 1)
         resverseResponse.map(
           e =>
             e.statut_camp === 0
@@ -33,15 +35,18 @@ class Board extends Component {
                   passedCampaigns: [...this.state.passedCampaigns, e]
                 })
         );
-        // console.log(this.state.currentCampaign);
-        // console.log(this.state.passedCampaigns);
+        //stocke le nom de la campagne dans le session storage
+        sessionStorage.setItem(
+          "currentCampaignName",
+          this.state.currentCampaign.nom_camp
+        );
       })
       .catch(err => console.log(err));
   }
 
   callApi = async () => {
     const currentFtId = sessionStorage.getItem("id_ft");
-    const response = await fetch(`/api/getCurrentCampaign/${currentFtId}`);
+    const response = await fetch(`/api/getCampaigns/${currentFtId}`);
     const body = await response.json();
 
     if (response.status !== 200) throw Error(body.message);
@@ -50,11 +55,11 @@ class Board extends Component {
   };
 
   render() {
-    console.log(this.state.show);
     return (
       <Fragment>
-        <Header className="buttonreturn" />
         {this.state.show && <Dialog toggleDialog={this.toggleDialog} />}
+        <Header className="buttonreturn" />
+
         {this.state.currentCampaign.length !== 0 ? (
           <Button
             textButton="Reprendre la campagne en cours"

@@ -16,7 +16,7 @@ class CampaignProcess extends React.Component {
   componentDidMount() {
     this.callApi()
       .then(response => {
-        // console.log(response);
+        //console.log(response);
         this.setState({ response });
       })
       .catch(err => console.log(err));

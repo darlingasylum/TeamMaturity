@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 
 import Header from "../../components/Header/Header";
-import Question from "../../components/Question/Question";
+import ButtonChapter from "../../components/ButtonChapter/ButtonChapter";
 import Button from "../../components/Button/Button";
 
 import "./Themes.css";
@@ -17,20 +17,19 @@ class Themes extends React.Component {
 
   //récupère l'ID de la campagne et on le stocke dans le session storage et dans le state
   componentDidMount() {
-    // console.log("id de la FT : ", this.state.currentId);
-    // console.log("nom de la campagne : ", this.state.currentCampaignName);
-
+    // console.log("themes/id de la FT : ", this.state.currentId);
+    // console.log("themes/nom de la campagne : ", this.state.currentCampaignName);
+    // console.log(sessionStorage.getItem("currentCampaignName"));
     this.callApi()
       .then(response => {
-        console.log(response);
-        this.setState({ response });
         //console.log(response);
+        this.setState({ response });
         sessionStorage.setItem(
           "currentCampaignId",
           this.state.response[0].id_camp
         );
         this.setState({ currentCampaignId: this.state.response[0].id_camp });
-        //console.log("id de la campagne : ", this.state.currentCampaignId);
+        // console.log("themes / id de la campagne : ", this.state.currentCampaignId);
       })
       .catch(err => console.log(err));
   }
@@ -48,7 +47,7 @@ class Themes extends React.Component {
 
   //au click valide la campagne en changeant le statut 0--> 1
   handleClick = () => {
-    // console.log(this.state.currentId, this.state.currentCampaignId);
+    console.log(this.state.currentId, this.state.currentCampaignId);
     const campaign_infos = {
       id_ft: this.state.currentId,
       id_camp: this.state.currentCampaignId
@@ -73,15 +72,15 @@ class Themes extends React.Component {
         <Header className="buttonreturn" />
         <div className="space">
           <Link to="/campaign/process">
-            <Question textQuestion="PROCESS" />
+            <ButtonChapter textQuestion="PROCESS" border="ChapterBorder" />
           </Link>
 
           <Link to="/campaign/qualite">
-            <Question textQuestion="QUALITE" />
+            <ButtonChapter textQuestion="QUALITE" border="ChapterBorder" />
           </Link>
 
           <Link to="/campaign/valeurs">
-            <Question textQuestion="VALEURS" />
+            <ButtonChapter textQuestion="VALEURS" border="ChapterBorder" />
           </Link>
           <Button
             textButton="Valider le questionnaire"

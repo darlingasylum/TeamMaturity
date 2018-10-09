@@ -1,0 +1,49 @@
+.mask {
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.8);
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.popup {
+  width: 30%;
+  height: 40vh;
+  background: white;
+  border: 2px solid #f56b2a;
+  border-radius: 15px;
+}
+
+.textSpan {
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.btnValider {
+  background: white;
+  border: 2px solid #f56b2a;
+  border-radius: 15px;
+  cursor: pointer;
+  width: 120px;
+  height: 60px;
+  color: #003333;
+  font-weight: 400;
+  font-size: 22px;
+  margin-top: 20px;
+}
+
+.inputPopUp {
+  width: 500px;
+  height: 70px;
+  border: 1px solid #f56b2a;
+  margin-top: 20px;
+}
