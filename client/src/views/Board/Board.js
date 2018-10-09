@@ -40,6 +40,7 @@ class Board extends Component {
           "currentCampaignName",
           this.state.currentCampaign.nom_camp
         );
+        console.log(this.state.passedCampaigns);
       })
       .catch(err => console.log(err));
   }
@@ -55,6 +56,7 @@ class Board extends Component {
   };
 
   render() {
+    this.routeParam = this.props.match.params.id;
     return (
       <Fragment>
         {this.state.show && <Dialog toggleDialog={this.toggleDialog} />}
@@ -83,7 +85,7 @@ class Board extends Component {
               textButton={e.nom_camp}
               classButton="historicButton"
               to={{
-                pathname: `/themes`
+                pathname: `/results/${this.routeParam}/${e.id_camp}`
               }}
             />
           ))

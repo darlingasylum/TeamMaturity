@@ -1,0 +1,13 @@
+table {
+  margin: 30px auto 0px auto;
+  width: 70%;
+}
+
+tr {
+  height: 15px;
+}
+
+thead {
+  background-color: #f56b2a;
+  color: #fff;
+}

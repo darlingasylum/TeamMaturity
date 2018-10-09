@@ -7,6 +7,7 @@ import Themes from "./views/Themes/Themes";
 import CampaignProcess from "./views/Campaign/CampaignProcess";
 import CampaignQualite from "./views/Campaign/CampaignQualite";
 import CampaignValeurs from "./views/Campaign/CampaignValeurs";
+import Results from "./views/Results/Results";
 
 import "./App.css";
 import QuestionDialog from "./components/QuestionDialog/QuestionDialog";
@@ -23,6 +24,7 @@ class App extends Component {
           <Route path="/campaign/valeurs" component={CampaignValeurs} />
           <Route path="/campaign/question/:id_q" component={QuestionDialog} />
           <Route path="/board/:id" component={Board} />
+          <Route path="/results/:id/:id_camp" component={Results} />
         </Switch>
       </Router>
     );

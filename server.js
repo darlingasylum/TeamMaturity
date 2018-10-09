@@ -92,4 +92,13 @@ app.post("/api/changeStatusCampaign", function(req, res) {
   }, req.body);
 });
 
+//RESULTS : RECUPERE LES RESULTATS DE LA CAMPAGNE N POUR LE CHAPITRE PROCESS
+app.get("/api/results/process/:currentCampaignId", function(req, res) {
+  var currentCampaignId = req.params.currentCampaignId;
+  database.getProcessResults(currentCampaignId, function(err, dataset) {
+    // console.log("server questions");
+    res.send(dataset);
+  });
+});
+
 app.listen(port, () => console.log(`Listening on port ${port}`));
