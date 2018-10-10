@@ -92,10 +92,20 @@ app.post("/api/changeStatusCampaign", function(req, res) {
   }, req.body);
 });
 
+//RESULTS : RECUPERE LES ID DES 3 CAMPAGNES N, N-1, N-2
+app.get("/api/get3campaigns/:id_ft/:currentCampaignId", function(req, res) {
+  const id_ft = req.params.id_ft;
+  const currentCampaignId = req.params.currentCampaignId;
+  database.get3campaigns(id_ft, currentCampaignId, function(err, dataset) {
+    // console.log("server questions");
+    res.send(dataset);
+  });
+});
+
 //RESULTS : RECUPERE LES RESULTATS DE LA CAMPAGNE N POUR LE CHAPITRE PROCESS
-app.get("/api/results/process/:currentCampaignId", function(req, res) {
-  var currentCampaignId = req.params.currentCampaignId;
-  database.getProcessResults(currentCampaignId, function(err, dataset) {
+app.get("/api/results_n/process/:currentCampaignId", function(req, res) {
+  const currentCampaignId = req.params.currentCampaignId;
+  database.getProcessResultsN(currentCampaignId, function(err, dataset) {
     // console.log("server questions");
     res.send(dataset);
   });

@@ -40,7 +40,7 @@ class Board extends Component {
           "currentCampaignName",
           this.state.currentCampaign.nom_camp
         );
-        console.log(this.state.passedCampaigns);
+        // console.log(this.state.passedCampaigns);
       })
       .catch(err => console.log(err));
   }

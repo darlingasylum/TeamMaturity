@@ -175,14 +175,27 @@ const changeStatusCampaign = (clbk, data) => {
   });
 };
 
+//RESULTS : RECUPERE LES ID DES 3 CAMPAGNES N, N-1, N-2
+const get3campaigns = (id_ft, currentCampaignId, clbk) => {
+  //console.log(campaign_name, id_ft);
+  connection.query(
+    //`SELECT * FROM questions LEFT JOIN resultats ON questions.id_q = resultats.id_q_r AND id_camp_r = ${currentCampaignId} WHERE chapitre_q LIKE 'Process%'`,
+    `SELECT * FROM campagnes WHERE id_ft_camp=${id_ft} AND id_camp BETWEEN 1 AND ${currentCampaignId} ORDER BY id_camp DESC LIMIT 3`,
+    function(error, results, fields) {
+      // console.log(results);
+      if (error) return clbk(error, null);
+      return clbk(null, results);
+    }
+  );
+};
+
 //RESULTS : RECUPERE LES RESULTATS DE LA CAMPAGNE N POUR LE CHAPITRE PROCESS
-const getProcessResults = (currentCampaignId, clbk) => {
+const getProcessResultsN = (currentCampaignId, clbk) => {
   // console.log(campaign_name, id_ft);
   connection.query(
-    //`SELECT * FROM campagnes WHERE id_ft_camp=${id_ft} AND nom_camp='${campaign_name}'`,
     `SELECT * FROM questions LEFT JOIN resultats ON questions.id_q = resultats.id_q_r AND id_camp_r = ${currentCampaignId} WHERE chapitre_q LIKE 'Process%'`,
     function(error, results, fields) {
-      console.log(results);
+      //console.log(results);
       if (error) return clbk(error, null);
       return clbk(null, results);
     }
@@ -200,6 +213,7 @@ module.exports = {
   send_response,
   changeStatusCampaign,
   getCampaigns,
-  getProcessResults,
+  get3campaigns,
+  getProcessResultsN,
   end
 };
