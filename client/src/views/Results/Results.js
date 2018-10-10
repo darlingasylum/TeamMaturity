@@ -114,6 +114,8 @@ class Results extends React.Component {
     ) {
       console.log(this.state.transformNCamp);
       return null;
+
+      //S'IL N'EXISTE QU'UNE CAMPAGNE N
     } else if (this.state.allCamp.length === 1) {
       return (
         <Fragment>
@@ -251,8 +253,12 @@ class Results extends React.Component {
           </table>
         </Fragment>
       );
+
+      //S'IL EXISTE UNE CAMPAGNE N ET UNE CAMPAGNE N-1
     } else if (this.state.allCamp.length === 2) {
       return <p>J'ai deux results</p>;
+
+      //S'IL EXISTE UNE CAMPAGNE N, UNE CAMPAGNE N-1 ET UNE CAMPAGNE N-2
     } else if (this.state.allCamp.length === 3) {
       return (
         <Fragment>
@@ -285,25 +291,52 @@ class Results extends React.Component {
                   Les bases
                 </td>
               </tr>
+              {/* MAP SUR TRANSFORMNCAMP POUR AFFICHER LES QUESTIONS ET LES REPONSES DE LA CAMPAGNE N */}
               {this.state.transformNCamp.Process_bases.map(e => (
                 <tr>
                   <td>
                     {e.id_q} - {e.intitule_q}
                   </td>
-                  <td />
-                  <td />
 
-                  {e.reponse_r === 0 ? (
-                    <td>
-                      <img src={IconCross} />
-                    </td>
-                  ) : e.reponse_r === 1 ? (
-                    <td>
-                      <img src={IconCheck} />
-                    </td>
-                  ) : (
-                    <p>pas de rep</p>
+                  {/* MAP SUR TRANSFORMN2CAMP POUR AFFICHER LES RESULTATS N-2 */}
+                  {this.state.transformN2Camp.Process_bases.map(
+                    e2 =>
+                      e2.id_q === e.id_q ? (
+                        <td className="TDResult">
+                          {e2.reponse_r === 0 ? (
+                            <img src={IconCross} />
+                          ) : e2.reponse_r === 1 ? (
+                            <img src={IconCheck} />
+                          ) : (
+                            <p>pas de rep</p>
+                          )}
+                        </td>
+                      ) : null
                   )}
+                  {/* MAP SUR TRANSFORMN1CAMP POUR AFFICHER LES RESULTATS N-1 */}
+                  {this.state.transformN1Camp.Process_bases.map(
+                    e1 =>
+                      e1.id_q === e.id_q ? (
+                        <td className="TDResult">
+                          {e1.reponse_r === 0 ? (
+                            <img src={IconCross} />
+                          ) : e1.reponse_r === 1 ? (
+                            <img src={IconCheck} />
+                          ) : (
+                            <p>pas de rep</p>
+                          )}
+                        </td>
+                      ) : null
+                  )}
+                  <td className="TDResult">
+                    {e.reponse_r === 0 ? (
+                      <img src={IconCross} />
+                    ) : e.reponse_r === 1 ? (
+                      <img src={IconCheck} />
+                    ) : (
+                      <p>pas de rep</p>
+                    )}
+                  </td>
                 </tr>
               ))}
               <tr>

@@ -21,6 +21,11 @@ tr {
   border: 1px solid grey;
 } */
 
+.TDResult {
+  text-align: center;
+  vertical-align: middle;
+}
+
 .tdChapitre {
   background-color: rgb(61, 58, 58);
   color: #fff;
