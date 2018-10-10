@@ -1,10 +1,35 @@
+.h1_campaign_name {
+  margin-bottom: 0;
+}
+
+.h2_date {
+  color: grey;
+  font-weight: 400;
+  text-align: center;
+}
+
 table {
-  margin: 30px auto 0px auto;
+  margin: 60px auto 0px auto;
   width: 70%;
 }
 
 tr {
   height: 15px;
+}
+
+/* td {
+  border: 1px solid grey;
+} */
+
+.tdChapitre {
+  background-color: rgb(61, 58, 58);
+  color: #fff;
+  height: 30px;
+}
+
+.tdSousChapitre {
+  background-color: rgb(199, 192, 192);
+  color: black;
 }
 
 thead {
