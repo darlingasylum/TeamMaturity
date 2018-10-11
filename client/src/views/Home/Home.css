@@ -13,7 +13,7 @@ h1 {
   display: block;
   font-size: 1.5em;
   height: 80px;
-  margin: 15px auto 0px auto;
+  margin: 14px 7px 0px 7px;
   width: 300px;
   transition: 0.3s;
 }
@@ -21,4 +21,12 @@ h1 {
 .buttonhome:hover {
   background: #f56b2a;
   color: white;
+}
+
+.wrapButton {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+  width: 70%;
 }

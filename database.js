@@ -189,11 +189,11 @@ const get3campaigns = (id_ft, currentCampaignId, clbk) => {
   );
 };
 
-//RESULTS : RECUPERE LES RESULTATS DE LA CAMPAGNE N POUR LE CHAPITRE PROCESS
-const getProcessResultsN = (currentCampaignId, clbk) => {
+//RESULTS : RECUPERE LES RESULTATS DE LA CAMPAGNE N
+const getResultsN = (currentCampaignId, clbk) => {
   // console.log(campaign_name, id_ft);
   connection.query(
-    `SELECT * FROM questions LEFT JOIN resultats ON questions.id_q = resultats.id_q_r AND id_camp_r = ${currentCampaignId} WHERE chapitre_q LIKE 'Process%'`,
+    `SELECT * FROM questions LEFT JOIN resultats ON questions.id_q = resultats.id_q_r AND id_camp_r = ${currentCampaignId}`,
     function(error, results, fields) {
       //console.log(results);
       if (error) return clbk(error, null);
@@ -214,6 +214,7 @@ module.exports = {
   changeStatusCampaign,
   getCampaigns,
   get3campaigns,
-  getProcessResultsN,
+  getResultsN,
+
   end
 };

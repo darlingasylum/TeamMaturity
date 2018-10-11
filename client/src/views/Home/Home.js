@@ -35,16 +35,18 @@ class Home extends Component {
           BIENVENUE SUR LA PLATEFORME MATURITY <br />
           Choisissez votre Feature Team!
         </h1>
-        {this.state.response.map(e => (
-          <Button
-            classButton="buttonhome"
-            textButton={e.nom_ft}
-            key={e.id_ft}
-            to={{
-              pathname: `/board/${e.id_ft}`
-            }}
-          />
-        ))}
+        <div className="wrapButton">
+          {this.state.response.map(e => (
+            <Button
+              classButton="buttonhome"
+              textButton={e.nom_ft}
+              key={e.id_ft}
+              to={{
+                pathname: `/board/${e.id_ft}`
+              }}
+            />
+          ))}
+        </div>
       </Fragment>
     );
   }

@@ -1,7 +1,5 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
-
 import "./QuestionDialog.css";
 import Button from "../Button/Button";
 

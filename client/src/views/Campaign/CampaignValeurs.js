@@ -172,7 +172,7 @@ class CampaignValeurs extends React.Component {
         ))}
 
         <Link to="/campaign/qualite">
-          <img />
+          <img alt="Icon" />
         </Link>
       </Fragment>
     );

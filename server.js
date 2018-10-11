@@ -102,10 +102,10 @@ app.get("/api/get3campaigns/:id_ft/:currentCampaignId", function(req, res) {
   });
 });
 
-//RESULTS : RECUPERE LES RESULTATS DE LA CAMPAGNE N POUR LE CHAPITRE PROCESS
-app.get("/api/results_n/process/:currentCampaignId", function(req, res) {
+//RESULTS : RECUPERE LES RESULTATS DE LA CAMPAGNE N
+app.get("/api/results_n/:currentCampaignId", function(req, res) {
   const currentCampaignId = req.params.currentCampaignId;
-  database.getProcessResultsN(currentCampaignId, function(err, dataset) {
+  database.getResultsN(currentCampaignId, function(err, dataset) {
     // console.log("server questions");
     res.send(dataset);
   });
