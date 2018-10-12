@@ -118,7 +118,12 @@ class Results extends React.Component {
     } else if (this.state.allCamp.length === 1) {
       return (
         <Fragment>
-          <Header className="buttonreturn" />
+          <Header
+            header="header"
+            className="buttonreturn"
+            teamName={sessionStorage.getItem("currentFTName")}
+            teamNameClass="header_team"
+          />
 
           <h1 className="h1_campaign_name">
             Résultats de la campagne {this.state.allCamp[0].nom_camp}
@@ -467,7 +472,12 @@ class Results extends React.Component {
     } else if (this.state.allCamp.length === 2) {
       return (
         <Fragment>
-          <Header className="buttonreturn" />
+          <Header
+            header="header"
+            className="buttonreturn"
+            teamName={sessionStorage.getItem("currentFTName")}
+            teamNameClass="header_team"
+          />
           <h1 className="h1_campaign_name">
             Résultats de la campagne {this.state.allCamp[0].nom_camp}
           </h1>
@@ -1054,7 +1064,12 @@ class Results extends React.Component {
     } else if (this.state.allCamp.length === 3) {
       return (
         <Fragment>
-          <Header className="buttonreturn" />
+          <Header
+            header="header"
+            className="buttonreturn"
+            teamName={sessionStorage.getItem("currentFTName")}
+            teamNameClass="header_team"
+          />
 
           <h1 className="h1_campaign_name">
             Résultats de la campagne {this.state.allCamp[0].nom_camp}

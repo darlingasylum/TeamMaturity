@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Question from "../../components/Question/Question";
 import IconCheck from "./Icons/check2.png";
+import Button from "../../components/Button/Button";
+
+import "./Campaigns.css";
 
 class CampaignQualite extends React.Component {
   state = {
@@ -34,33 +37,49 @@ class CampaignQualite extends React.Component {
   render() {
     return (
       <Fragment>
-        <Header className="buttonreturn" />
+        <Header
+          header="header"
+          className="buttonreturn"
+          teamName={sessionStorage.getItem("currentFTName")}
+          teamNameClass="header_team"
+        />
         <h1>QUALITE</h1>
-        {this.state.response.map(e => (
-          <Link
-            to={{
-              pathname: `/campaign/question/${e.id_q}`,
-              state: { questionName: e.intitule_q }
-            }}
-          >
-            {typeof e.reponse_r === "number" ? (
-              <Question
-                textQuestion={e.intitule_q}
-                key={e.id_q}
-                number={e.id_q}
-                sourceIcon={IconCheck}
-              />
-            ) : (
-              <Question
-                textQuestion={e.intitule_q}
-                key={e.id_q}
-                number={e.id_q}
-                // sourceIcon={IconCross}
-              />
-            )}
+
+        <div className="campaignWrap">
+          {this.state.response.map(e => (
+            <Link
+              to={{
+                pathname: `/campaign/question/${e.id_q}`,
+                state: { questionName: e.intitule_q }
+              }}
+            >
+              {typeof e.reponse_r === "number" ? (
+                <Question
+                  textQuestion={e.intitule_q}
+                  key={e.id_q}
+                  number={e.id_q}
+                  sourceIcon={IconCheck}
+                  style={{ background: "#f56b2a" }}
+                />
+              ) : (
+                <Question
+                  textQuestion={e.intitule_q}
+                  key={e.id_q}
+                  number={e.id_q}
+                  // sourceIcon={IconCross}
+                />
+              )}
+            </Link>
+          ))}
+        </div>
+        <div className="miniwrapButton">
+          <Link to="/themes">
+            <Button
+              textButton="VALIDER LA PARTIE QUALITE"
+              classButton="ValideBtn"
+            />
           </Link>
-        ))}
-        <Link to="/campaign/process" />
+        </div>
       </Fragment>
     );
   }

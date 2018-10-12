@@ -1,7 +1,9 @@
-import React from "react";
+import React, { Fragment } from "react";
+
+import Header from "../../components/Header/Header";
+import Button from "../Button/Button";
 
 import "./QuestionDialog.css";
-import Button from "../Button/Button";
 
 class QuestionDialog extends React.Component {
   constructor(props) {
@@ -77,44 +79,52 @@ class QuestionDialog extends React.Component {
     if (!this.state.response || this.state.response.length == []) return null;
 
     return (
-      // console.log(this.state.response[0].id_q),
-      <div className="MaskPage">
-        <div className="QuestionPopUp">
-          <form onSubmit={this.handleSubmit}>
-            {this.state.response.map(e => (
-              <a href={this.state.response[0].lien_q} target="_blank">
-                {" "}
-                <p>{e.intitule_q}</p>{" "}
-              </a>
-            ))}
-            <label>
-              <br />
-              <input
-                type="radio"
-                name="radiobutton"
-                value="1"
-                onChange={this.onButtonChanged}
-              />
-              Oui <br />
-              <input
-                type="radio"
-                name="radiobutton"
-                value="0"
-                onChange={this.onButtonChanged}
-              />{" "}
-              Non
-              <br />
-              <input
-                type="text"
-                placeholder="Commentaire"
-                onChange={this.onTextChanged}
-              />
-            </label>
-            <br /> <br />
-            <Button type="submit" textButton="Valider" />
-          </form>
+      <Fragment>
+        <Header
+          header="header"
+          className="buttonreturn"
+          teamName={sessionStorage.getItem("currentFTName")}
+          teamNameClass="header_team"
+        />
+        <div className="MaskPage">
+          <div className="QuestionPopUp">
+            <form onSubmit={this.handleSubmit} className="FormQuestionDialog">
+              {this.state.response.map(e => (
+                <a href={this.state.response[0].lien_q} target="_blank">
+                  {" "}
+                  <p className="TextQuestionDialog">{e.intitule_q}</p>{" "}
+                </a>
+              ))}
+              <label className="LabelQuestionDialog">
+                <br />
+                <input
+                  type="radio"
+                  name="radiobutton"
+                  value="1"
+                  onChange={this.onButtonChanged}
+                />
+                Oui <br />
+                <input
+                  type="radio"
+                  name="radiobutton"
+                  value="0"
+                  onChange={this.onButtonChanged}
+                />{" "}
+                Non
+                <br />
+                <input
+                  className="InputQuestionDialog"
+                  type="text"
+                  placeholder="Commentaire"
+                  onChange={this.onTextChanged}
+                />
+              </label>
+              <br /> <br />
+              <input type="submit" value="Valider" className="ValideBtnSize" />
+            </form>
+          </div>
         </div>
-      </div>
+      </Fragment>
     );
   }
 }

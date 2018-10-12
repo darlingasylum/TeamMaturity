@@ -25,6 +25,15 @@ app.get("/api/getCampaigns/:id_ft", function(req, res) {
   });
 });
 
+// BOARD : RECUPERE LE NOM DE LA FT
+app.get("/api/getFTName/:id_ft", function(req, res) {
+  const id_ft = req.params.id_ft;
+  database.getFTName(id_ft, function(err, dataset) {
+    // console.log(dataset);
+    res.send(dataset);
+  });
+});
+
 //BOARD DIALOG : POSTE LE NOM D'UNE NOUVELLE CAMPAGNE
 app.post("/api/campaign-name", function(req, res) {
   // console.log(req.body);

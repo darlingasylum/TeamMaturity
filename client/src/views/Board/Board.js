@@ -20,8 +20,9 @@ class Board extends Component {
   componentDidMount() {
     this.routeParam = this.props.match.params.id;
     sessionStorage.setItem("id_ft", this.routeParam);
+    const currentFtId = sessionStorage.getItem("id_ft");
     //récupère toutes les campagnes de la FT
-    this.callApi()
+    this.callApi(`/api/getCampaigns/${currentFtId}`)
       .then(response => {
         //inverse l'ordre pour que la dernière campagne s'affiche en 1er
         const resverseResponse = response.reverse();
@@ -43,11 +44,17 @@ class Board extends Component {
         // console.log(this.state.passedCampaigns);
       })
       .catch(err => console.log(err));
+
+    this.callApi(`/api/getFTName/${currentFtId}`)
+      .then(response => {
+        console.log(response[0].nom_ft);
+        sessionStorage.setItem("currentFTName", response[0].nom_ft);
+      })
+      .catch(err => console.log(err));
   }
 
-  callApi = async () => {
-    const currentFtId = sessionStorage.getItem("id_ft");
-    const response = await fetch(`/api/getCampaigns/${currentFtId}`);
+  callApi = async url => {
+    const response = await fetch(url);
     const body = await response.json();
 
     if (response.status !== 200) throw Error(body.message);
@@ -57,10 +64,17 @@ class Board extends Component {
 
   render() {
     this.routeParam = this.props.match.params.id;
+    // if (!sessionStorage.getItem("currentFTName")) return null;
+
     return (
       <Fragment>
         {this.state.show && <Dialog toggleDialog={this.toggleDialog} />}
-        <Header className="buttonreturn" />
+        <Header
+          header="header"
+          className="buttonreturn"
+          teamName={sessionStorage.getItem("currentFTName")}
+          teamNameClass="header_team"
+        />
 
         {this.state.currentCampaign.length !== 0 ? (
           <Button

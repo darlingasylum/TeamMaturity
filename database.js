@@ -37,6 +37,18 @@ const getCampaigns = (id_ft, clbk) => {
   );
 };
 
+// BOARD : RECUPERE LE NOM DE LA FT
+const getFTName = (id_ft, clbk) => {
+  connection.query(
+    `SELECT nom_ft FROM feature_team WHERE id_ft=${id_ft}`,
+    function(error, results, fields) {
+      console.log(results);
+      if (error) return clbk(error, null);
+      return clbk(null, results);
+    }
+  );
+};
+
 //BOARD DIALOG : POSTE LE NOM D'UNE NOUVELLE CAMPAGNE
 const postCampaignName = (clbk, data) => {
   const q = "INSERT INTO campagnes(nom_camp, id_ft_camp) VALUES (?, ?)";
@@ -205,6 +217,7 @@ const getResultsN = (currentCampaignId, clbk) => {
 module.exports = {
   getTeam,
   postCampaignName,
+  getFTName,
   getProcessQuestions,
   getQualityQuestions,
   getValueQuestions,

@@ -1,0 +1,19 @@
+.subtitle {
+  color: #f56b2a;
+  font-size: 1.2em;
+  font-weight: 400;
+  text-align: center;
+}
+
+.campaignWrap {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  justify-content: center;
+  margin: auto;
+}
+
+.miniwrapButton {
+  margin: auto;
+  width: 200px;
+}

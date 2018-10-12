@@ -1,6 +1,6 @@
 .mask {
   height: 100vh;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(68, 64, 64, 0.8);
   position: absolute;
   display: flex;
   align-items: center;
@@ -9,16 +9,16 @@
 }
 
 .popup {
-  width: 30%;
-  height: 40vh;
   background: white;
   border: 2px solid #f56b2a;
   border-radius: 15px;
+  height: auto;
+  padding: 60px 0px 60px 0px;
+  width: 30%;
 }
 
 .textSpan {
   font-size: 20px;
-  margin-top: 20px;
 }
 
 .form {
@@ -42,7 +42,7 @@
 }
 
 .inputPopUp {
-  width: 500px;
+  width: 70%;
   height: 70px;
   border: 1px solid #f56b2a;
   margin-top: 20px;

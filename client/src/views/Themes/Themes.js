@@ -63,24 +63,49 @@ class Themes extends React.Component {
         return results.json();
       })
       .then(function(myresults) {});
-    window.history.go(-1);
+
+    window.alert(
+      "Bravo, vous avez terminé la campagne!\nVous pouvez maintenant aller voir les résultats et les comparer aux campagnes précédentes"
+    );
+    window.location = `/board/${this.state.currentId}`;
   };
 
   render() {
     return (
       <Fragment>
-        <Header className="buttonreturn" />
+        <Header
+          header="header"
+          className="buttonreturn"
+          teamName={sessionStorage.getItem("currentFTName")}
+          teamNameClass="header_team"
+        />
         <div className="space">
+          <p className="p_explication">
+            Ce questionnaire est composé de 49 questions réparties en trois
+            chapitres. {<br />}
+            Vous pouvez y répondre dans l'ordre que vous souhaitez. {<br />}
+            Vous pouvez quitter le questionnaire et y revenir plus tard.
+          </p>
+
           <Link to="/campaign/process">
-            <ButtonChapter textQuestion="PROCESS" border="ChapterBorder" />
+            <ButtonChapter
+              textQuestion="CHAPITRE PROCESS"
+              border="ChapterBorder"
+            />
           </Link>
 
           <Link to="/campaign/qualite">
-            <ButtonChapter textQuestion="QUALITE" border="ChapterBorder" />
+            <ButtonChapter
+              textQuestion="CHAPITRE QUALITE"
+              border="ChapterBorder"
+            />
           </Link>
 
           <Link to="/campaign/valeurs">
-            <ButtonChapter textQuestion="VALEURS" border="ChapterBorder" />
+            <ButtonChapter
+              textQuestion="CHAPITRE VALEURS"
+              border="ChapterBorder"
+            />
           </Link>
           <Button
             textButton="Valider le questionnaire"

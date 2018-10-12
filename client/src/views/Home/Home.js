@@ -30,7 +30,11 @@ class Home extends Component {
   render() {
     return (
       <Fragment>
-        <Header className="hiddenclass" />
+        <Header
+          header="header"
+          className="hiddenclass"
+          teamNameClass="header_team_hidden"
+        />
         <h1>
           BIENVENUE SUR LA PLATEFORME MATURITY <br />
           Choisissez votre Feature Team!

@@ -8,7 +8,7 @@ class Question extends React.Component {
         <p className="p_question">
           {this.props.number} - {this.props.textQuestion}
         </p>
-        <img src={this.props.sourceIcon} className="icon" alt="icone" />
+        <img src={this.props.sourceIcon} className="iconQuestion" />
       </div>
     );
   }

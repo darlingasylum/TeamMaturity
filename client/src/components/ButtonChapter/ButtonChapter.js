@@ -5,10 +5,10 @@ class ButtonChapter extends React.Component {
   render() {
     return (
       <div className={this.props.border} onClick={this.props.onClick}>
-        <p className="p_question">
+        <p className="p_chapter">
           {this.props.number} {this.props.textQuestion}
         </p>
-        <img src={this.props.sourceIcon} className="icon" alt="positiveIcon" />
+        <img src={this.props.sourceIcon} className="icon" />
       </div>
     );
   }

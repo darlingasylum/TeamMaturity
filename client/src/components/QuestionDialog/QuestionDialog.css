@@ -1,7 +1,6 @@
 .MaskPage {
-  background: white;
+  background: rgba(255, 255, 255, 0.85);
   height: 100vh;
-  opacity: 0.95;
   position: fixed;
   top: 0;
   width: 100%;
@@ -9,13 +8,55 @@
 }
 
 .QuestionPopUp {
-  height: 60vh;
-  margin: 15vh auto 0 auto;
+  background: white;
   border: 1px solid orange;
   border-radius: 20px;
-  background: white;
-
+  box-sizing: border-box;
+  height: auto;
+  margin: 25vh auto 0 auto;
   opacity: 1;
-  width: 60%;
+  padding: 20px;
+  width: 50%;
   z-index: 10;
+}
+
+.FormQuestionDialog {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.TextQuestionDialog {
+  text-align: center;
+  font-size: 20px;
+}
+
+.InputQuestionDialog {
+  width: 70%;
+  height: 70px;
+  border: 1px solid #f56b2a;
+  font-size: 16px;
+}
+
+.LabelQuestionDialog {
+  width: 100%;
+  height: 155px;
+  text-align: center;
+}
+
+.ValideBtnSize {
+  color: #003333;
+  font-size: 1.2em;
+  height: 50px;
+  width: 150px;
+  transition: 0.3s;
+  border: 1px solid #f56b2a;
+  border-radius: 10px;
+  line-height: 50px;
+  cursor: pointer;
+}
+
+.ValideBtnSize:hover {
+  background: #f56b2a;
+  color: white;
 }

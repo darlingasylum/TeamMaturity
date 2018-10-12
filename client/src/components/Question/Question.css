@@ -2,10 +2,9 @@
   border: 2px solid #f56b2a;
   border-radius: 10px;
   display: flex;
-  height: 120px;
   justify-content: space-between;
-  line-height: 60px;
-  margin: 0% 1% 1% 15%;
+  line-height: 25px;
+  margin: 0% auto 1% auto;
   transition: 0.3s;
   width: 60%;
 }
@@ -15,11 +14,6 @@
 
 .titleQuestions {
   margin-left: 10%;
-  font-weight: 300;
-}
-
-h3 {
-  margin-left: 15%;
   font-weight: 300;
 }
 
@@ -35,10 +29,6 @@ h3 {
   margin-left: 3%;
 }
 
-.icon {
-  height: 90%;
-}
-
 a {
   text-decoration: none;
   color: black;
@@ -47,4 +37,13 @@ a {
 .p_question {
   font-size: 1.2em;
   font-weight: 300;
+}
+
+.validQuestion {
+  background: #f56b2a;
+}
+
+.iconQuestion {
+  object-fit: contain;
+  height: 70px;
 }
