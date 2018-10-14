@@ -9,7 +9,8 @@ class Board extends Component {
   state = {
     show: false,
     currentCampaign: [],
-    passedCampaigns: []
+    passedCampaigns: [],
+    currentFTName: ""
   };
 
   //ouvre/ferme la popup
@@ -48,6 +49,7 @@ class Board extends Component {
     this.callApi(`/api/getFTName/${currentFtId}`)
       .then(response => {
         console.log(response[0].nom_ft);
+        this.setState({ currentFTName: response[0].nom_ft });
         sessionStorage.setItem("currentFTName", response[0].nom_ft);
       })
       .catch(err => console.log(err));
@@ -64,8 +66,8 @@ class Board extends Component {
 
   render() {
     this.routeParam = this.props.match.params.id;
-    // if (!sessionStorage.getItem("currentFTName")) return null;
-
+    if (this.state.currentFTName.length === 0) return null;
+    console.log(this.state.currentFTName.length);
     return (
       <Fragment>
         {this.state.show && <Dialog toggleDialog={this.toggleDialog} />}
@@ -79,7 +81,7 @@ class Board extends Component {
         {this.state.currentCampaign.length !== 0 ? (
           <Button
             textButton="Reprendre la campagne en cours"
-            classButton="createButton"
+            classButton="calltoActionButton"
             to={{
               pathname: `/themes`
             }}
@@ -87,7 +89,7 @@ class Board extends Component {
         ) : (
           <Button
             textButton="Démarrer une campagne"
-            classButton="createButton"
+            classButton="calltoActionButton"
             onClick={this.toggleDialog}
           />
         )}

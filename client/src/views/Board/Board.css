@@ -13,6 +13,22 @@
   color: white;
 }
 
+.calltoActionButton {
+  background: #f56b2a;
+  color: white;
+  display: block;
+  font-size: 1.5em;
+  height: 80px;
+  margin: 200px auto 200px auto;
+  width: 300px;
+  transition: 0.3s;
+}
+
+.calltoActionButton:hover {
+  background: white;
+  color: #003333;
+}
+
 .historicButton {
   color: #003333;
   display: block;

@@ -136,11 +136,13 @@ const send_response = (clbk, data) => {
     data.reponse_r,
     data.commentaire_r
   ];
+  console.log(payload);
   connection.query(
     `SELECT * FROM resultats WHERE id_camp_r = ${data.id_camp_r} AND id_q_r = ${
       data.id_q_r
     }`,
     function(error, results, cols) {
+      console.log(results);
       if (results.length !== 0) {
         console.log("ma réponse existe déjà");
         const sql_update = `UPDATE resultats
@@ -160,8 +162,8 @@ const send_response = (clbk, data) => {
           "INSERT INTO resultats(id_camp_r, id_q_r, reponse_r, commentaire_r) VALUES (?, ?, ?, ?)";
 
         connection.query(sql, payload, function(error, results, cols) {
-          // console.log(error);
-          // console.log(results);
+          console.log(error);
+          console.log(results);
           // console.log(cols);
           if (error) return clbk(error, null);
           return clbk(null, results);
