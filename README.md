@@ -76,7 +76,7 @@ La page des résultats permet de comparer les résultats de différentes campagn
 
 ### Prérequis
 
-Pour utiliser l'outil TeamMaturity en local vous devrez installer [nodeJS](https://nodejs.org/en/NodeJS) et [Yarn](https://yarnpkg.com/en/Yarn) dans votre système.
+Pour utiliser l'outil TeamMaturity en local vous devez installer globalement [NodeJS](https://nodejs.org/en/NodeJS), [Yarn](https://yarnpkg.com/en/Yarn) et [mySQL](https://www.mysql.com/fr/MySQL) dans votre système.
 
 
 ### Installation
