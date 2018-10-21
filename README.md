@@ -12,9 +12,8 @@ Le besoin d'un outil d'évaluation avait été constaté lors d'un workshop cour
 
 ## Auteures
 
-Elsa Bougrier - [github](https://github.com/elsaBou) - [linkedIn](https://www.linkedin.com/in/elsa-bougrier-296677138/)
-
-Elisa Hery - [github](https://github.com/ElisaHery) -  [linkedIn](https://www.linkedin.com/in/elisa-hery-425a58108/)
+Elsa Bougrier ([GitHub](https://github.com/elsaBou) - [LinkedIn](https://www.linkedin.com/in/elsa-bougrier-296677138/) )
+ &&  Elisa Hery ([GitHub](https://github.com/ElisaHery) -  [LinkedIn](https://www.linkedin.com/in/elisa-hery-425a58108/))
 
 ## Développement
 
