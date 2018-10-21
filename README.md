@@ -126,13 +126,13 @@ L'outil est lancé!
 
 ## Pistes de progrès: 
 
-Les possibles améliorations à apporter à l’outil :
+Liste non exhaustive des possibles améliorations à apporter à l’outil :
 
-1 - Ajouter des icônes check sur la page thème qui indiqueront si toutes les questions d’un chapitre on déjà été répondues. 
+1 - Ajouter des icônes check sur la page thème qui indiqueront si toutes les questions d’un chapitre ont déjà été répondues. 
 
 2 - Afficher les dates des anciennes campagnes sur la page des résultats ainsi que sur la page board. 
 
-3 - Présence d’un bug sur la page des questions, obligeant à rafraichir la page sinon l’icône de la question ne s’affiche pas. 
+3 - Présence d’un bug sur la page des questions, obligeant à rafraîchir la page sinon l’icône de la question ne s’affiche pas. 
 
 4 - Mettre en relief les résultats indiquant une évolution positive et une évolution négative
 
