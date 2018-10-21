@@ -79,7 +79,7 @@ Pour utiliser l'outil TeamMaturity en local vous devez installer globalement [No
 
 
 ### Installation
-L'installation se déroule en trois étapes :
+L'installation se déroule en quatre étapes :
 
 1) cloner le repository dans votre système
 
@@ -87,7 +87,7 @@ L'installation se déroule en trois étapes :
 git clone https://github.com/ElisaHery/maturity_v1.git 
 ````
 
-2) Installez la base de données
+2) Installer la base de données
 
 Importez le fichier database.sql dans notre système de gestion de base de données (phpMyAdmin par exemple).
 
@@ -104,7 +104,7 @@ const connection = mysql.createConnection({
 });
 ````
 
-3) installation des modules
+3) installer les modules
 
 Depuis le terminal, placez vous dans le dossier racine et tapez la commande suivante :
 
@@ -112,7 +112,7 @@ Depuis le terminal, placez vous dans le dossier racine et tapez la commande suiv
 npm install
 ````
 
-4) Lancement de l’app
+4) Lancer l’app
 
 Toujours dans le dossier racine, lancez la commande suivante :
 
