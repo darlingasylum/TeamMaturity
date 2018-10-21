@@ -18,7 +18,7 @@ Elisa Hery - [github](https://github.com/ElisaHery) -  [linkedIn](https://www.li
 
 ## Développement
 
-Ce projet a été développé en [React.JS](https://reactjs.org/ReactJS) / [nodeJS](https://nodejs.org/en/NodeJS) / MySQL.
+Ce projet a été développé en [React.JS](https://reactjs.org/ReactJS) / [NodeJS](https://nodejs.org/en/NodeJS) /  [mySQL](https://www.mysql.com/fr/MySQL)
 
 ## Contenu
 
@@ -92,7 +92,7 @@ git clone https://github.com/ElisaHery/maturity_v1.git
 
 Importez le fichier database.sql dans notre système de gestion de base de données (phpMyAdmin par exemple).
 
-N'oubliez pas de changer les informations relatives à la base de données dans le fichier “database.js”, ligne 6.
+N'oubliez pas de changer les informations relatives à la base de données dans le fichier “database.js”.
 
 ````
 const mysql = require("mysql");
