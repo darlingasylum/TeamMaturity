@@ -83,7 +83,7 @@ Windows : http://www.wampserver.com/  --  Mac : https://www.mamp.info/en/ -- lin
 
 2) téléchargez phpMyAdmin depuis cette page : https://www.phpmyadmin.net/ 
 
-## Installation
+### Installation
 L'installation se déroule en trois étapes :
 
 1) cloner le repository dans votre système
@@ -124,7 +124,7 @@ yarn dev
 L'outil est lancé!
 
 
-## Changelog: 
+## Pistes de progrès: 
 
 Les possibles améliorations à apporter à l’outil :
 
