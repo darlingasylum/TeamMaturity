@@ -24,7 +24,7 @@ Ce projet a été développé en ReactJS / NodeJS / MySQL.
 
 La page home regroupe le nom des feature teams, chaque équipe possède son propre espace.
 
-![create-database](screenshots/home.png)
+![create-database](screenshots/home-copie.png)
 
 La page board permet aux équipes de débuter une nouvelle campagne, de reprendre une campagne commencée 
 mais non terminée, ou de consulter ses résultats.
