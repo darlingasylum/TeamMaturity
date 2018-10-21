@@ -12,13 +12,13 @@ Le besoin d'un outil d'évaluation avait été constaté lors d'un workshop cour
 
 ## Auteures
 
-Elsa Bougrier - https://github.com/elsaBou 
+Elsa Bougrier - [github](https://github.com/elsaBou) - [linkedIn](https://www.linkedin.com/in/elsa-bougrier-296677138/)
 
-Elisa Hery - https://github.com/ElisaHery
+Elisa Hery - [github](https://github.com/ElisaHery) -  [linkedIn](https://www.linkedin.com/in/elisa-hery-425a58108/)
 
 ## Développement
 
-Ce projet a été développé en ReactJS / NodeJS / MySQL.
+Ce projet a été développé en [React.JS](https://reactjs.org/ReactJS) / [nodeJS](https://nodejs.org/en/NodeJS) / MySQL.
 
 ## Contenu
 
@@ -75,13 +75,9 @@ La page des résultats permet de comparer les résultats de différentes campagn
 ## Utiliser Team Maturity
 
 ### Prérequis
-Pour utiliser l'outil Team Maturity vous devez avoir installé phpMyAdmin sur votre système. Pour ce faire :
 
-1) Installez Apache, PHP et MySQL sur votre système grace aux packages suivants :
+Pour utiliser l'outil TeamMaturity en local vous devrez installer [nodeJS](https://nodejs.org/en/NodeJS) et [Yarn](https://yarnpkg.com/en/Yarn) dans votre système.
 
-Windows : http://www.wampserver.com/  --  Mac : https://www.mamp.info/en/ -- linux : https://doc.ubuntu-fr.org/lamp 
-
-2) téléchargez phpMyAdmin depuis cette page : https://www.phpmyadmin.net/ 
 
 ### Installation
 L'installation se déroule en trois étapes :
@@ -92,18 +88,22 @@ L'installation se déroule en trois étapes :
 git clone https://github.com/ElisaHery/maturity_v1.git 
 ````
 
-2) Installez la base de données sur phpMyAdmin
+2) Installez la base de données
 
-Dans phpMyAdmin, créez une nouvelle base de données appelée "maturity".
+Importez le fichier database.sql dans notre système de gestion de base de données (phpMyAdmin par exemple).
 
-![create-database](screenshots/create_db.png)
+N'oubliez pas de changer les informations relatives à la base de données dans le fichier “database.js”, ligne 6.
 
-Importez le fichier "database.sql"
+````
+const mysql = require("mysql");
 
-![import-database](screenshots/import_db.png)
-
-
-Puis inscrivez votre mot de passe vers phpMyAdmin dans le fichier “database.js”, ligne 6.
+const connection = mysql.createConnection({
+  host: "localhost",
+  user: "********",
+  password: "********",
+  database: "maturity"
+});
+````
 
 3) installation des modules
 
