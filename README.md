@@ -24,12 +24,20 @@ Ce projet a été développé en ReactJS / NodeJS / MySQL.
 
 La page home regroupe le nom des feature teams, chaque équipe possède son propre espace.
 
-![create-database](screenshots/home-copie.png)
+
+![home](screenshots/home.png)
+
+
+
 
 La page board permet aux équipes de débuter une nouvelle campagne, de reprendre une campagne commencée 
 mais non terminée, ou de consulter ses résultats.
 
-![create-database](screenshots/board.png)
+
+![board](screenshots/board.png)
+
+
+
 
 Lorsque la feature team n’a pas de campagne en cours, au clic sur “démarrer une campagne” une page pop-up s’affiche, laissant à l’équipe le choix du nom de la campagne. 
 Un clic sur le bouton valider mène vers la page thème. 
@@ -37,20 +45,31 @@ Un clic sur le bouton valider mène vers la page thème.
 La page thème regroupe trois boutons correspondant aux trois chapitres Process, Qualité, Valeur. 
 Un clic sur un des chapitres mène à la page des questions. 
 
-![create-database](screenshots/themes.png)
+
+![themes](screenshots/themes.png)
+
 
 
 La page questionnaire affiche toutes les questions relatives au chapitre sélectionné. 
 Cette page permet de visualiser le nombre de questions du chapitre et une icône check 
 s’affiche lorsque l’équipe a déjà répondu à une question. 
 
-![create-database](screenshots/questions.png)
+
+![questions](screenshots/questions.png)
+
 
 
 Une seconde pop-up s’affiche lorsque l’équipe clique sur la question auquelle elle souhaite répondre, 
-laissant apparaître la question sous forme de lien cliquable menant vers le site corporate, 
-deux radio button pour répondre à la question ainsi qu’une espace permettant de laisser un commentaire. 
-Lorsque l’équipe valide la question, la pop-up se referme et l’équipe retourne sur la page questionnaire. 
+laissant apparaître la question sous forme de lien cliquable menant vers le site corporate.
+
+
+![question](screenshots/question.png)
+
+
+
+La page des résultats permet de comparer les résultats de différentes campagnes de questions:
+
+![resultats](screenshots/results.png)
 
 
 ## Utiliser Team Maturity
@@ -81,7 +100,7 @@ Dans phpMyAdmin, créez une nouvelle base de données appelée "maturity".
 
 Importez le fichier "database.sql"
 
-![create-database](screenshots/import_db.png)
+![import-database](screenshots/import_db.png)
 
 
 Puis inscrivez votre mot de passe vers phpMyAdmin dans le fichier “database.js”, ligne 6.
@@ -113,7 +132,9 @@ Les possibles améliorations à apporter à l’outil :
 
 2 - Afficher les dates des anciennes campagnes sur la page des résultats ainsi que sur la page board. 
 
-3 - Mettre en relief les résultats indiquant une évolution positive et une évolution négative
+3 - Présence d’un bug sur la page des questions, obligeant à rafraichir la page sinon l’icône de la question ne s’affiche pas. 
+
+4 - Mettre en relief les résultats indiquant une évolution positive et une évolution négative
 
 
 
