@@ -2,7 +2,7 @@
 Le team Maturity Framework est un outil destiné à l'auto-évaluation des équipes techniques (feature teams) sur trois catégories de critères : 
 les process, la qualité, et la valeur fournie à l’utilisateur.
 
-Il est composé d'une série de 49 questions anxquelles les membres d'une même équipe peuvent répondre ensemble.
+Il est composé d'une série de 49 questions auxquelles les membres d'une même équipe peuvent répondre ensemble.
 Les résultats sont ensuite comparables aux résultats des précédentes campagnes de réponses.
 
 ## Contexte
