@@ -127,13 +127,17 @@ L'outil est lancé!
 
 Liste non exhaustive des possibles améliorations à apporter à l’outil :
 
-1 - Ajouter des icônes check sur la page thème qui indiqueront si toutes les questions d’un chapitre ont déjà été répondues. 
+1 - Ajouter des icônes check sur la page thème qui indiqueront si toutes les questions d’un chapitre ont déjà été répondues.
 
-2 - Afficher les dates des anciennes campagnes sur la page des résultats ainsi que sur la page board. 
+2 - Mettre les boutons radios directement à côté des questions pour éviter l'ouverture d'une popup à chaque question. Ajouter une icône pour déployer la zone de texte si l'équipe veut ajouter un commentaire.
 
-3 - Présence d’un bug sur la page des questions, obligeant à rafraîchir la page sinon l’icône de la question ne s’affiche pas. 
+3 - Afficher les dates des anciennes campagnes sur la page des résultats ainsi que sur la page board. 
 
-4 - Mettre en relief les résultats indiquant une évolution positive et une évolution négative
+4 - Présence d’un bug sur la page des questions, obligeant à rafraîchir la page sinon l’icône de la question ne s’affiche pas. 
+
+5 - Sur la page des résultats, si l'équipe a ajouté un commentaire en répondant, le signifier d'une façon ou d'une autre, etle rendre disponible au survol.
+
+6 - Mettre en relief les résultats indiquant une évolution positive et une évolution négative
 
 
 
