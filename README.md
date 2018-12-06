@@ -89,7 +89,7 @@ git clone https://github.com/ElisaHery/maturity_v1.git
 
 2) Installer la base de données
 
-Importez le fichier database.sql dans notre système de gestion de base de données (phpMyAdmin par exemple).
+Importez le fichier database.sql dans votre système de gestion de base de données (phpMyAdmin par exemple).
 
 N'oubliez pas de changer les informations relatives à la base de données dans le fichier “database.js”.
 
