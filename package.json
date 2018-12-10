@@ -17,5 +17,9 @@
   },
   "devDependencies": {
     "concurrently": "^3.5.0"
-  }
+  },
+  "scripts": {
+    "client": "cd client && pm2 start npm -- start",
+    "server": "pm2 start server.js"
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
 }
