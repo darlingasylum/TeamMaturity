@@ -2,8 +2,8 @@
   "name": "testcode1",
   "version": "1.0.0",
   "scripts": {
-    "client": "cd client && yarn start",
-    "server": "nodemon server.js",
+    "client": "cd client && pm2 start npm -- start",
+    "server": "pm2 start server.js",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
   "dependencies": {
@@ -11,15 +11,14 @@
     "express": "^4.16.2",
     "moment": "^2.22.2",
     "mysql": "^2.16.0",
-    "react": "^16.5.2",
+    "nodemon": "^1.18.7",
+    "pm2": "^3.2.3",
+    "react": "^16.6.3",
     "prop-types": "^15.6.2",
-    "react-moment": "^0.8.1" 
+    "react-moment": "^0.8.1"
   },
   "devDependencies": {
     "concurrently": "^3.5.0"
-  },
-  "scripts": {
-    "client": "cd client && pm2 start npm -- start",
-    "server": "pm2 start server.js",
-    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+  }
 }
+
