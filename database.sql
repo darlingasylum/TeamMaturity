@@ -21,11 +21,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `campagnes` (
-  `id_camp` tinyint(3) UNSIGNED NOT NULL,
+  `id_camp` integer UNSIGNED NOT NULL,
   `date_camp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'date création campagne',
   `nom_camp` varchar(40) NOT NULL,
-  `id_ft_camp` tinyint(6) UNSIGNED DEFAULT NULL,
-  `statut_camp` tinyint(1) NOT NULL DEFAULT '0'
+  `id_ft_camp` integer UNSIGNED DEFAULT NULL,
+  `statut_camp` integer NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -35,7 +35,7 @@ CREATE TABLE `campagnes` (
 --
 
 CREATE TABLE `feature_team` (
-  `id_ft` tinyint(6) UNSIGNED NOT NULL,
+  `id_ft` integer UNSIGNED NOT NULL,
   `nom_ft` varchar(40) CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -61,7 +61,7 @@ INSERT INTO `feature_team` (`id_ft`, `nom_ft`) VALUES
 --
 
 CREATE TABLE `questions` (
-  `id_q` tinyint(6) UNSIGNED NOT NULL,
+  `id_q` integer UNSIGNED NOT NULL,
   `chapitre_q` varchar(30) NOT NULL,
   `intitule_q` tinytext NOT NULL,
   `lien_q` tinytext NOT NULL
@@ -129,11 +129,11 @@ INSERT INTO `questions` (`id_q`, `chapitre_q`, `intitule_q`, `lien_q`) VALUES
 --
 
 CREATE TABLE `resultats` (
-  `id_r` tinyint(6) UNSIGNED NOT NULL,
-  `id_camp_r` tinyint(6) UNSIGNED DEFAULT NULL,
-  `id_q_r` tinyint(6) UNSIGNED DEFAULT NULL,
-  `reponse_r` tinyint(1) NOT NULL,
-  `commentaire_r` tinytext NOT NULL
+  `id_r` integer UNSIGNED NOT NULL,
+  `id_camp_r` integer UNSIGNED DEFAULT NULL,
+  `id_q_r` integer UNSIGNED DEFAULT NULL,
+  `reponse_r` integer NOT NULL,
+  `commentaire_r` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -175,25 +175,25 @@ ALTER TABLE `resultats`
 -- AUTO_INCREMENT pour la table `campagnes`
 --
 ALTER TABLE `campagnes`
-  MODIFY `id_camp` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id_camp` integer UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT pour la table `feature_team`
 --
 ALTER TABLE `feature_team`
-  MODIFY `id_ft` tinyint(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_ft` integer UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT pour la table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id_q` tinyint(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id_q` integer UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT pour la table `resultats`
 --
 ALTER TABLE `resultats`
-  MODIFY `id_r` tinyint(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_r` integer UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Contraintes pour les tables déchargées
