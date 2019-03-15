@@ -15,6 +15,7 @@ class Home extends Component {
     this.callApi()
       .then(response => {
         this.setState({ response });
+        console.log("teams from db ==>", response);
         sessionStorage.clear();
       })
       .catch(err => console.log(err));
@@ -23,6 +24,7 @@ class Home extends Component {
   callApi = async () => {
     const response = await fetch("/api/teams");
     const body = await response.json();
+
     if (response.status !== 200) throw Error(body.message);
     return body;
   };

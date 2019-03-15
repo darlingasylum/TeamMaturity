@@ -3,15 +3,19 @@ const database = require("./database");
 const bodyParser = require("body-parser");
 
 const app = express();
-const port = process.env.PORT || 5555;
+const port = process.env.port || 5555;
+
+console.log("process.env.port", process.env.port);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // HOME : RECUPERE LE NOM DES FT
 app.get("/api/teams", function(req, res) {
+  console.log("je suis ds api/teams");
+
   database.getTeam(function(err, dataset) {
-    // console.log(dataset);
+    console.log(dataset);
     res.send(dataset);
   });
 });
@@ -28,6 +32,7 @@ app.get("/api/getCampaigns/:id_ft", function(req, res) {
 // BOARD : RECUPERE LE NOM DE LA FT
 app.get("/api/getFTName/:id_ft", function(req, res) {
   const id_ft = req.params.id_ft;
+  console.log("l'ID de la FT est ", id_ft);
   database.getFTName(id_ft, function(err, dataset) {
     // console.log(dataset);
     res.send(dataset);
